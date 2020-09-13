@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "5eee651f739f8c674fd736ee"
+  },
+  "name": "Butter Chicken",
+  "image": "food-1.png",
+  "price": "350",
+  "size": "half"
+},{
+  "_id": {
+    "$oid": "5eee6671a27a66807cf2bea3"
+  },
+  "name": "Chicken Curry",
+  "image": "food-1.png",
+  "price": "250",
+  "size": "quarter"
+},{
+  "_id": {
+    "$oid": "5eee6692a27a66807cf2bea4"
+  },
+  "name": "Chicken Tikka",
+  "image": "food-1.png",
+  "price": "200",
+  "size": "half"
+},{
+  "_id": {
+    "$oid": "5eee66a5a27a66807cf2bea5"
+  },
+  "name": "Paneer Tikka",
+  "image": "food-1.png",
+  "price": "185",
+  "size": "full"
+},{
+  "_id": {
+    "$oid": "5eee66c4a27a66807cf2bea6"
+  },
+  "name": "Hakka Noodles",
+  "image": "food-1.png",
+  "price": "150",
+  "size": "full"
+},{
+  "_id": {
+    "$oid": "5eee66cfa27a66807cf2bea7"
+  },
+  "name": "Schezwan Noodles",
+  "image": "food-1.png",
+  "price": "180",
+  "size": "full"
+},{
+  "_id": {
+    "$oid": "5eee66eea27a66807cf2bea8"
+  },
+  "name": "Fried Rice",
+  "image": "food-1.png",
+  "price": "140",
+  "size": "full"
+},{
+  "_id": {
+    "$oid": "5eee6717a27a66807cf2bea9"
+  },
+  "name": "Schezwan Fried Rice",
+  "image": "food-1.png",
+  "price": "160",
+  "size": "full"
+}]
