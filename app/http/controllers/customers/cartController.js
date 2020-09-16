@@ -14,7 +14,7 @@ const cartController = () => {
                 }
             }
             let cart = req.session.cart
-                // check if item doesn't exist
+            // check if item doesn't exist
             if(!cart.items[req.body._id]){
                 cart.items[req.body._id] = {
                     item: req.body,
