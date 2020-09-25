@@ -45,7 +45,7 @@ const authController = () => {
                 return res.redirect('/register')
             }
             //check if email exist
-            User.exists({ email: email } , (err,result) => {
+            User.exists({ email: email } , (_err,result) => {
                 if(result){
                     req.flash('error','email already exist')
                     return res.redirect('/register')
