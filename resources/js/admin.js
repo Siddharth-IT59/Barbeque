@@ -25,7 +25,17 @@ export function initAdmin() {
                 <p>${ menuItem.item.name } - ${ menuItem.qty } pcs </p>
             `
         }).join('')
-      }
+    }
+
+    function getTotal(items) {
+        let parsedItems = Object.values(items)
+        let total = 0
+        
+        parsedItems.forEach(itm => {
+            total = total + itm.item.price*itm.qty
+        })
+        return ` <p><b>Total Amount</b>&emsp;₹${total}  </p> `
+    }
 
     function generateMarkup(orders) {
         return orders.map(order => {
@@ -33,7 +43,7 @@ export function initAdmin() {
                 <tr>
                 <td class="border px-4 py-2 text-green-900">
                     <p>${ order._id }</p>
-                    <div>${ renderItems(order.items) }</div>
+                    <div>${ renderItems(order.items) } ${ getTotal(order.items) } </div>
                 </td>
                 <td class="border px-4 py-2">${ order.customerId.name }</td>
                 <td class="border px-4 py-2">${ order.phone }</td>
@@ -70,7 +80,7 @@ export function initAdmin() {
                     </div>
                 </td>
                 <td class="border px-4 py-2">
-                    ${ moment(order.createdAt).format('hh:mm A') }
+                    ${ moment(order.createdAt).format('MMM Do YYYY, h:mm A') }
                 </td>
             </tr>
         `
