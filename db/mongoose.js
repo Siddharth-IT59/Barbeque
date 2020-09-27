@@ -4,7 +4,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/foodApp',{
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
-    useFindAndModify: true
+    useFindAndModify: false
 })
 
 const connection = mongoose.connection

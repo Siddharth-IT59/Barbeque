@@ -7,6 +7,7 @@ const flash = require('express-flash')
 const MongoDbStore = require('connect-mongo')(session)
 
 const passport = require('passport')
+const Emitter = require('events')
 const mongoose = require('mongoose')
 const connection = require('./db/mongoose')
 
@@ -15,6 +16,11 @@ let mongoStore = new MongoDbStore({
     mongooseConnection : connection,
     collection: 'sessions'
 })
+
+// Event emitter
+const eventEmitter = new Emitter()
+app.set('eventEmitter', eventEmitter)
+
 
 //session config
 app.use(session({
@@ -57,6 +63,23 @@ app.set('view engine', 'ejs')
 
 initRoutes(app)
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Server started at port ${port}`)
+})
+
+// Socket
+const io = require('socket.io')(server)
+io.on('connection', (socket) => {
+    // Join
+    socket.on('join',(orderId) => {
+        socket.join(orderId)
+    })
+})
+
+eventEmitter.on('orderUpdated', (data) => {
+    io.to(`order_${data.id}`).emit('orderUpdated', data)
+})
+
+eventEmitter.on('orderPlaced', (data) => {
+    io.to('adminRoom').emit('orderPlaced', data)
 })
