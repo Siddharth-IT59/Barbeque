@@ -479,19 +479,19 @@ section.status {
 }
 
 .status-box ul li:nth-child(2) span:before {
-  content: "\F560";
+  content: "\F164";
 }
 
 .status-box ul li:nth-child(3) span:before {
-  content: "\F818";
+  content: "\F2E7";
 }
 
 .status-box ul li:nth-child(4) span:before {
-  content: "\F0D1";
+  content: "\F21C";
 }
 
 .status-box ul li:nth-child(5) span:before {
-  content: "\F582";
+  content: "\F015";
 }
 
 .status-box ul li {
