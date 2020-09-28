@@ -315,6 +315,10 @@ body {
   color: #232323;
 }
 
+footer {
+  background: #ccc;
+}
+
 nav li:last-child a {
   background: #ee4f4f;
 }
@@ -532,5 +536,10 @@ section.status {
   float: right;
   font-size: 14px;
   margin-top: 8px;
+}
+
+.card {
+  width: 120px;
+  height: 120px;
 }
 

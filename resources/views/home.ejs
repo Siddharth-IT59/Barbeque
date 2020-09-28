@@ -77,12 +77,12 @@
         <h1 class="text-xl font-bold mb-8">Menu</h1>
         <div class="grid grid-cols-4 col-gap-12 row-gap-16">
             <% dishes.forEach((dish) => { %>
-            <div class="w-64">
+            <div class="w-64 shadow-2xl">
                 <img class="h-50 mb-4 mx-auto" src="/img/<%= dish.image %>" alt="">
                 <div class="text-center">
                     <h2 class="mb-4 text-lg"><%= dish.name %></h2>
                     <span class="size py-1 px-4 rounded-full uppercase text-xs"><%= dish.size %></span>
-                    <div class="flex items-center justify-around mt-6">
+                    <div class="flex items-center justify-around mt-6 mb-8">
                         <span class="font-bold text-lg">₹<%= dish.price %></span>
                         <button data-dish="<%= JSON.stringify(dish) %>" class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
                             <span>+</span>
@@ -94,4 +94,86 @@
             <% }) %>
         </div>
     </section>
+
+    <footer>
+        <section class="menu container mx-auto py-8 mt-8">
+            <h1 class="text-xl font-bold mb-2">About Us</h1>
+            <div class="inline-flex ml-8 mb-8">
+                <p>Barbeque was founded in 2006 by one of our Promoters. We currently own and operate 138 outlets in India, 5 outlets in UAE, 1 outlet in Malaysia and 1 outlet in Oman.<br/>
+                    One of the leading casual dining chains in India, Barbeque pioneered the concept of “over the table barbeque” live grills embedded in dining tables – allowing guests<br/>to grill their own barbecue’s right at their tables.<br/><br/>
+                    Indian cuisine is a natural part of the diet in the markets in which the Barbeque Restaurants operate. We continue to offer new menu options, both vegetarian and non-veg, largely based on Indian cuisine and use seasonal customer preferences to introduce new dishes. We also run popular food festivals at our Barbeque Nation Restaurants, thereby offering our customers a range of Indian and international cuisines.<br/><br/>
+                    Our fixed price ‘all you can eat’ concept at our Barbeque offers its customers a varying spread of consistently delicious food at a value-oriented price in a pleasant and casual dining environment. We believe that barbeque cuisine is distinctively attractive as compared with other dining options due to its DIY and cooked-at-the-table nature and the flexibility and fun of mixing and matching a wide variety of meats, vegetables, sauces and condiments to create dishes according to each diner’s individual tastes and preferences. In addition, fixed price dining is very popular amongst relatively larger groups, due to customers’ perception of value for money and the comfort of certainty over the bill amount irrespective of varying individual appetites and consumption</p>
+            </div>
+            
+            <h1 class="text-xl font-bold mb-4">Reviews & Ratings</h1>
+            <div class="grid grid-cols-4 col-gap-12 row-gap-16 mb-6 ml-8">
+                <div class="w-64 shadow-2xl bg-gray-300 mb-4 rounded">
+                    <img class="h-50 mb-4 mx-auto card mt-4" src="/img/111111111.png" alt="">
+                    <div class="text-center mb-6">
+                        <h2 class="mb-4 text-lg font-bold">Yash</h2>
+                        <h2>⭐⭐⭐⭐⭐</h2><br/>
+                        <p>We enjoyed the food , it was really<br/>
+                            delicious with great quality,<br/>
+                            everything had a unique taste <br/>
+                            nice arrangement and services<br/>from the staff while eating.
+                        </p>                       
+                    </div>
+                </div>
+                <div class="w-64 shadow-2xl bg-gray-300 mb-4 rounded">
+                    <img class="h-50 mb-4 mx-auto card mt-4" src="/img/2222222.png" alt="">
+                    <div class="text-center mb-6">
+                        <h2 class="mb-4 text-lg font-bold">Shreya Kesharwani</h2>
+                        <h2>⭐⭐⭐⭐</h2><br/>
+                        <p>Great Service and polite bearers.<br/>Walked in 
+                            for a lunch reservation and the food was great.<br/>Definitely 
+                            a brilliant place for <br/>dine-in.
+                        </p>                       
+                    </div>
+                </div>
+                <div class="w-64 shadow-2xl bg-gray-300 mb-4 rounded">
+                    <img class="h-50 mb-4 mx-auto card mt-4" src="/img/111111111.png" alt="">
+                    <div class="text-center mb-6">
+                        <h2 class="mb-4 text-lg font-bold">Virat Kohli</h2>
+                        <h2>⭐⭐⭐⭐⭐</h2><br/>
+                        <p>We tried the Barbeque for the <br/>first time
+                            last night and the food<br/>was great, freshly cooked very<br/>
+                            tasty and well presented.<br/>
+                            The waiters were attentive and <br/>
+                            service overall was good. 
+                        </p>                       
+                    </div>
+                </div>
+                <div class="w-64 shadow-2xl bg-gray-300 mb-4 rounded">
+                    <img class="h-50 mb-4 mx-auto card mt-4" src="/img/2222222.png" alt="">
+                    <div class="text-center mb-6">
+                        <h2 class="mb-4 text-lg font-bold">Sameer Ansari</h2>
+                        <h2>⭐⭐⭐⭐</h2><br/>
+                        <p>The restaurant looked to have<br/>
+                            been recently decorated. Overall<br/>
+                            a great meal and great value for<br/>
+                            money we will certainly be <br/>
+                            visiting again.
+                        </p>                       
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-xl font-bold mb-2">Contact Us</h1>
+            <div class="inline-flex ml-8">
+                <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img style="width: 40px;height:40px;" src="/img/instagram.png" alt=""></a></div>
+                <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img style="width: 40px;height:40px;" src="/img/facebook.png" alt=""></a></div>
+                <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img style="width: 40px;height:40px;" src="/img/whatsapp.png" alt=""></a></div>
+                <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img style="width: 40px;height:40px;" src="/img/gmail.png" alt=""></a></div>
+                <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img style="width: 40px;height:40px;" src="/img/call.png" alt=""></a></div>
+            </div>
+
+            <h1 class="text-xl font-bold mb-2 mt-8">Complaints   &   Queries</h1>
+            <div class="inline-flex ml-8 mb-2">
+                <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="https://github.com/Siddharth-IT59/Barbeque"><img style="width: 40px;height:40px;" src="/img/github.png" alt=""></a></div>
+                <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="https://www.linkedin.com/in/siddharth-kesharwani-9471a91b2/"><img style="width: 40px;height:40px;" src="/img/linkedin.png" alt=""></a></div>
+               
+            </div>
+            
+        </section>
+    </footer>
 

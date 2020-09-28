@@ -5,7 +5,15 @@
 body{
     font-family: 'Lato', sans-serif ;
     -webkit-font-smoothing: antialiased ;
-     color: $dark ;
+    color: $dark ;
+}
+
+// .menu-section{
+//     background: $gray ;
+// }
+
+footer{
+    background: $gray ;
 }
 
 nav li:last-child a{
@@ -219,4 +227,9 @@ section.status{
     float: right;
     font-size: 14px ;
     margin-top : 8px ;
+}
+
+.card{
+    width: 120px;
+    height: 120px;
 }
