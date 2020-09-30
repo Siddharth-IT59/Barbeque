@@ -1,13 +1,15 @@
-<section class="orders light-section">
+<div class="bg-gray-300">
+    <section class="orders light-section">
     <div class="container mx-auto pt-12">
-        <h1 class="font-bold text-lg mb-4">Order Summary</h1>
+        <h1 class="font-bold text-xl mb-4">Order Summary</h1>
         <% if(messages.success){ %>
         <div id="success-alert" class="flex items-center bg-red-500 text-white text-sm font-bold px-4 py-3" role="alert">
             <p><%= messages.success %></p>
         </div>
         <% } %>
-        <table class="w-full table-auto border px-4 py-2 mb-8 bg-gray-200">
-            <thead>
+        <!-- old table color : bg-gray-200 -->
+        <table class="w-full table-auto border px-4 py-2 bg-gray-200 shadow-2xl">
+            <thead class="text-lg">
                 <tr>
                     <th class="px-4 py-2 text-left">Orders</th>
                     <th class="px-4 py-2 text-left">Name</th>
@@ -22,3 +24,4 @@
         </table>
     </div>
 </section>
+</div>

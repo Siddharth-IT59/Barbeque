@@ -110,13 +110,13 @@
     <div class="" style="background-color: #ffefa0;">
         <section class="menu container mx-auto py-8">
             <h1 class="text-xl font-bold mb-8">Menu</h1>
-            <div class="grid grid-cols-4 col-gap-12 row-gap-16">
+            <div class="grid grid-cols-4 col-gap-12 row-gap-8">
                 <% dishes.forEach((dish) => { %>
                 <div class="w-64 shadow-2xl bg-orange-100 rounded-t-none mb-8">
                     <img class="h-50 mb-4 mx-auto rounded-t-none" src="/img/<%= dish.image %>" alt="">
                     <div class="text-center bg-orange-100 rounded-t-none">
                         <h2 class="mb-4 text-lg font-bold"><%= dish.name %></h2>
-                        <span class="size py-1 px-4 rounded-full uppercase text-xs"><%= dish.size %></span>
+                        <span class="size py-1 px-4 rounded-full uppercase text-sm"><%= dish.size %></span>
                         <div class="flex items-center bg-orange-100 justify-around mt-6 mb-8 rounded-t-none">
                             <span class="font-bold text-lg">₹<%= dish.price %></span>
                             <button data-dish="<%= JSON.stringify(dish) %>"
@@ -211,26 +211,27 @@
             <h1 class="text-xl font-bold mb-2">Contact Us</h1>
             <div class="inline-flex ml-8">
                 <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
-                            style="width: 40px;height:40px;" src="/img/instagram.png" alt=""></a></div>
+                    style="width: 40px;height:40px;" src="/img/instagram.png" alt=""></a></div>
                 <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
-                            style="width: 40px;height:40px;" src="/img/facebook.png" alt=""></a></div>
+                    style="width: 40px;height:40px;" src="/img/facebook.png" alt=""></a></div>
                 <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
-                            style="width: 40px;height:40px;" src="/img/whatsapp.png" alt=""></a></div>
+                    style="width: 40px;height:40px;" src="/img/whatsapp.png" alt=""></a></div>
                 <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
-                            style="width: 40px;height:40px;" src="/img/gmail.png" alt=""></a></div>
+                    style="width: 40px;height:40px;" src="/img/gmail.png" alt=""></a></div>
                 <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
-                            style="width: 40px;height:40px;" src="/img/call.png" alt=""></a></div>
+                    style="width: 40px;height:40px;" src="/img/call.png" alt=""></a></div>
             </div>
 
             <h1 class="text-xl font-bold mb-2 mt-8">Complaints & Queries</h1>
             <div class="inline-flex ml-8 mb-2">
                 <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a
-                        href="https://github.com/Siddharth-IT59/Barbeque"><img style="width: 40px;height:40px;"
-                            src="/img/github.png" alt=""></a></div>
+                    href="https://github.com/Siddharth-IT59/Barbeque"><img style="width: 40px;height:40px;"
+                    src="/img/github.png" alt=""></a>
+                </div>
                 <div class="flex-1 text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a
-                        href="https://www.linkedin.com/in/siddharth-kesharwani-9471a91b2/"><img
-                            style="width: 40px;height:40px;" src="/img/linkedin.png" alt=""></a></div>
-
+                    href="https://www.linkedin.com/in/siddharth-kesharwani-9471a91b2/"><img
+                    style="width: 40px;height:40px;" src="/img/linkedin.png" alt=""></a>
+                </div>
             </div>
 
         </section>
