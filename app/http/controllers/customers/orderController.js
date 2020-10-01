@@ -1,5 +1,6 @@
 const Order = require('../../../models/order')
 const moment = require('moment')
+const sendOrderMail = require('../../../../emails/sendOrderMail')
 
 const orderController = () => {
     return {
@@ -19,6 +20,8 @@ const orderController = () => {
             order.save().then((result) => {
                 Order.populate(result, { path: 'customerId' }, (err, data) => {
                     req.flash('success','Order Placed successfully !')
+                    sendOrderMail(result)
+                    //console.log(result)
                     delete req.session.cart
                     // Emit
                     const eventEmitter = req.app.get('eventEmitter')
@@ -47,6 +50,14 @@ const orderController = () => {
                 return res.render('customers/singleOrder', { order })
             }
             res.redirect('/')
+        },
+        async cancel(req, res){
+            const order = await Order.findByIdAndDelete(req.body.order_id)
+            if(!order){
+                req.flash('error','Cannot Delete')
+                return res.redirect('/customers/orders')
+            }
+            return res.redirect('/')
         }
     }
 }

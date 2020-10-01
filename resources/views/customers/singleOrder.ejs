@@ -1,7 +1,7 @@
 <section class="status">
     <div class="container mx-auto">
         <div class="status-box w-2/3 mx-auto">
-            <div class="flex items-center justify-between mb-16">
+            <div class="flex items-center justify-between mb-6">
                 <h1 class="text-xl font-bold">Live status</h1>
                 <h6 class="bg-gray py-1 rounded-full px-4 text-green-600 text-xs"><%= order._id %></h6>
                 <input id="hiddenInput" type="hidden" value="<%= JSON.stringify(order) %>">
@@ -13,6 +13,14 @@
                 <li class="status_line text-xl pb-16" data-status="delivered"><span>Out for delivery</span></li>
                 <li class="status_line text-xl" data-status="completed"><span>Delivered</span></li>
             </ul>
+            <div>
+                <form action="/cancel-order" method="POST" class="mt-2 ml-64">
+                    <div>
+                        <button type="submit" class="inline-block px-6 py-2 rounded-full btn-primary text-white font-bold mt-12">Cancel Order</button>
+                        <input type="hidden" name="order_id" value="<%= order._id %>">    
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </section>

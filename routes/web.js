@@ -21,6 +21,7 @@ const initRoutes = (app) => {
 
     // Customer Routes
     app.post('/orders',auth, orderController().store)
+    app.post('/cancel-order',auth, orderController().cancel)
     app.get('/customer/orders',auth, orderController().index)
     app.get('/customer/orders/:id',auth, orderController().show)
 
