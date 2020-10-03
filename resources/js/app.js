@@ -1,10 +1,21 @@
 import axios from 'axios'
 import Noty from 'noty'
 import { initAdmin } from './admin'
+import { initPromo } from './script'
 import moment from 'moment'
 
 let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
+let applyBtn = document.querySelector('#apply-promo')
+
+// function initPromo(code){
+//     console.log('hi')
+//     let promo_code = { coupon: code }
+//     //applyPromo(promo_code)
+//     axios.post('/promo-code',promo_code).then((res) => {
+//         console.log(res.data.discount)
+//     })
+// }
 
 function updateCart(dish){
     axios.post('/update-cart', dish).then((res) => {
@@ -32,6 +43,14 @@ if(alertMsg){
     setTimeout(() => {
         alertMsg.remove()
     },2000)
+}
+
+if(applyBtn){
+    applyBtn.addEventListener('click', (e) =>{
+        let code = document.getElementById('coupon').value
+        console.log(code)
+        initPromo(code)
+    })
 }
 
 //initAdmin()
@@ -93,4 +112,3 @@ socket.on('orderUpdated', (data) => {
     }).show()
     console.log(data)
 })
-

@@ -18,6 +18,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    promoCode: {
+        type: String,
+        required: false
+    },
     paymentType: {
         type: String,
         default: 'COD'

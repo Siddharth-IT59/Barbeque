@@ -13,14 +13,25 @@ const renderItems = (items) => {
     }).join('')
 }
 
-const getTotal = (items) => {
+const getTotal = (items, promoCode) => {
     let parsedItems = Object.values(items)
     let total = 0
-    
+
     parsedItems.forEach(itm => {
-        total = total + itm.item.price*itm.qty
+        total = total + itm.item.price * itm.qty
     })
-    return `<b>₹${total}</b>  `
+    //return `<b>₹${total}</b>  `
+    return `<td colspan="2">Total Amount</td>
+            <td>₹${total}</td>
+            <tr>
+            <td colspan="2">Discount</td>
+            <td>₹${promoCode}</td>
+            </tr>
+            <tr>
+            <td colspan="2">Total Payable</td>
+            <td>₹${total - promoCode}</td>
+            </tr>
+    `
 }
 
 const sendOrderMail = (order) => {
@@ -60,11 +71,9 @@ const sendOrderMail = (order) => {
             <th>Qty</th> 
             <th>Price</th>
           </tr>
-          ${renderItems(order.items)}
-          <tr>
-            <td colspan="2">Total Amount</td>
-            <td>${getTotal(order.items)}</td>
-          </tr>
+            ${renderItems(order.items)}
+            ${getTotal(order.items,order.promoCode)}
+          
         </table>
         
         </body>

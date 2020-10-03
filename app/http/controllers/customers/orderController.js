@@ -1,12 +1,14 @@
 const Order = require('../../../models/order')
+const Promo = require('../../../models/promo')
 const moment = require('moment')
 const sendOrderMail = require('../../../../emails/sendOrderMail')
 
 const orderController = () => {
     return {
         store(req, res){
+            console.log(req.body)
             // validate req
-            const { phone, address } = req.body
+            const { phone, address, promoCode } = req.body
             if(!phone || !address){
                 req.flash('error','All fields mandatory !')
                 return res.redirect('/cart')
@@ -15,7 +17,8 @@ const orderController = () => {
                 customerId: req.user._id,
                 items: req.session.cart.items,
                 phone: phone,
-                address: address
+                address: address,
+                promoCode: promoCode
             })
             order.save().then((result) => {
                 Order.populate(result, { path: 'customerId' }, (err, data) => {
@@ -23,6 +26,7 @@ const orderController = () => {
                     sendOrderMail(result)
                     //console.log(result)
                     delete req.session.cart
+                    delete req.session.promo
                     // Emit
                     const eventEmitter = req.app.get('eventEmitter')
                     eventEmitter.emit('orderPlaced', data)
@@ -58,6 +62,24 @@ const orderController = () => {
                 return res.redirect('/customers/orders')
             }
             return res.redirect('/')
+        },
+        async applyPromoCode(req, res){
+            delete req.session.promo
+            delete req.session.cart.discount
+            console.log(req.body)
+            console.log(req.body.coupon)
+            //delete req.session.promo
+            const promo = await Promo.findOne({ code: req.body.coupon })
+            console.log(promo)
+            if(!promo){
+                req.flash('error','Invalid Promo Code')
+                return res.redirect('/cart')
+            }
+            //console.log(req.user)
+            req.session.promo = promo.discount
+            req.session.cart.discount = promo.discount 
+            //req.session.cart.totalPrice = req.session.cart.totalPrice - promo.discount
+            return res.json({ discount: req.session.cart.discount , totalPrice: req.session.cart.totalPrice})
         }
     }
 }

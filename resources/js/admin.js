@@ -28,23 +28,25 @@ export function initAdmin(socket) {
         }).join('')
     }
 
-    function getTotal(items) {
+    function getTotal(items,promoCode) {
         let parsedItems = Object.values(items)
         let total = 0
         
         parsedItems.forEach(itm => {
             total = total + itm.item.price*itm.qty
         })
-        return ` <p><b>Total Amount</b>&emsp;₹${total}  </p> `
-    }
-
+        return ` <p><b>Total Amount</b>&emsp;₹${total}  </p> 
+            <p><b>Discount</b>&emsp;₹${promoCode}  </p>
+            <p><b>Total Payable</b>&emsp;₹${total - promoCode}  </p>
+            `
+        }
     function generateMarkup(orders) {
         return orders.map(order => {
             return `
                 <tr>
                 <td class="border px-4 py-2 text-green-900">
                     <p>${ order._id }</p>
-                    <div>${ renderItems(order.items) } ${ getTotal(order.items) } </div>
+                    <div>${ renderItems(order.items) } ${ getTotal(order.items,order.promoCode) }  </div>
                 </td>
                 <td class="border px-4 py-2">${ order.customerId.name }</td>
                 <td class="border px-4 py-2">${ order.phone }</td>
