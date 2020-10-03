@@ -26590,7 +26590,8 @@ function updateCart(dish) {
     cartCounter.innerText = res.data.totalQty;
     new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
       type: "warning",
-      text: 'Added to cart'
+      text: 'Added to cart',
+      timeout: 2000
     }).show();
   });
 }

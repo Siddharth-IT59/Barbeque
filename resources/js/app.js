@@ -23,7 +23,8 @@ function updateCart(dish){
         cartCounter.innerText = res.data.totalQty
         new Noty({
             type: "warning",
-            text: 'Added to cart'
+            text: 'Added to cart',
+            timeout:2000
         }).show()
     })
 }
