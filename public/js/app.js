@@ -26702,41 +26702,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
 
 
+
+function changeText(text) {
+  new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
+    type: "warning",
+    text: text,
+    timeout: 1000
+  }).show();
+}
+
 function initPromo(code) {
   console.log('hi');
   var promo_code = {
     coupon: code
   };
-  console.log(JSON.stringify(promo_code)); //applyPromo(promo_code)
-
+  console.log(JSON.stringify(promo_code));
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/promo-code', promo_code).then(function (res) {
     console.log(JSON.stringify(res.data.totalPrice));
     var subTotal = res.data.totalPrice;
     var totalAmt = document.querySelector('#totalAmt');
     var pcode = document.querySelector('#pcode');
-    pcode.value = res.data.discount; //console.log(res.session.cart.totalPrice)
-    //console.log(subTotal+''+res.data.discount)
+    pcode.value = res.data.discount;
 
-    var amount = 0;
+    if (res.data.discount) {
+      var amount = 0;
 
-    if (subTotal > 250) {
-      amount = subTotal - res.data.discount;
-      new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
-        type: "warning",
-        text: "You received a discount of \u20B9".concat(res.data.discount),
-        timeout: 1000
-      }).show();
+      if (subTotal > 250) {
+        amount = subTotal - res.data.discount;
+        var text = "You received a discount of \u20B9".concat(res.data.discount);
+        changeText(text);
+      } else {
+        amount = subTotal;
+        var _text = "Not valid for cart value less than \u20B9250";
+        changeText(_text);
+      } //let amount = subTotal - res.data.discount
+
+
+      totalAmt.textContent = '₹' + amount.toString();
     } else {
-      amount = subTotal;
-      new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
-        type: "warning",
-        text: "Not valid for cart value less than \u20B9250",
-        timeout: 2000
-      }).show();
-    } //let amount = subTotal - res.data.discount
-
-
-    totalAmt.textContent = '₹' + amount.toString();
+      var _text2 = "Invalid promo code.";
+      changeText(_text2);
+    }
   });
 }
 

@@ -2,19 +2,19 @@
     <% if(session.cart){ %>
     <div class="order conatiner mx-auto w-1/2">
         <div class="flex items-center border-b border-gray-300 pb-4">
-            <img src="/img/shopping-cart.png" alt="">
+            <img src="/img/cart.png" style="width:24px; height:24px;" alt="">
             <h1 class="font-bold ml-4 text-2xl">Order Summary</h1>
         </div>
         <div class="food-list">
             <% for(let dish of Object.values(session.cart.items)){ %>
             <div class="flex items-center my-8"> 
-                <img class="w-20 flex-1 ml-4" src="/img/menu/<%= dish.item.image %>" alt="">
-                <div class="flex-1 ml-4">
+                <img class="w-20 flex-1 ml-4 rounded" src="/img/menu/<%= dish.item.image %>" alt="">
+                <div class="flex-1 ml-8">
                     <h1 class="font-bold text-xl"><%= dish.item.name %></h1>
-                    <span><%= dish.item.size %></span>
+                    <span class="uppercase text-gray-700"><%= dish.item.size %></span>
                 </div>
-                <span class="flex-1"><%= dish.qty %></span>
-                <span class="font-bold text-lg">₹<%= dish.item.price*dish.qty %></span>
+                <span class="flex-1 mr-4"><%= dish.qty %></span>
+                <span class="font-bold text-lg mr-8">₹<%= dish.item.price*dish.qty %></span>
             </div>
             <% } %>
         </div>
@@ -65,4 +65,3 @@
     </div>
     <% } %>
 </section>
-<!-- <script src="../../js/app.js"></script> -->
