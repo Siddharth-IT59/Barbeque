@@ -26591,7 +26591,7 @@ function updateCart(dish) {
     new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
       type: "warning",
       text: 'Added to cart',
-      timeout: 2000
+      timeout: 1000
     }).show();
   });
 }
@@ -26717,13 +26717,26 @@ function initPromo(code) {
     pcode.value = res.data.discount; //console.log(res.session.cart.totalPrice)
     //console.log(subTotal+''+res.data.discount)
 
-    var amount = subTotal - res.data.discount;
+    var amount = 0;
+
+    if (subTotal > 250) {
+      amount = subTotal - res.data.discount;
+      new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
+        type: "warning",
+        text: "You received a discount of \u20B9".concat(res.data.discount),
+        timeout: 1000
+      }).show();
+    } else {
+      amount = subTotal;
+      new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
+        type: "warning",
+        text: "Not valid for cart value less than \u20B9250",
+        timeout: 2000
+      }).show();
+    } //let amount = subTotal - res.data.discount
+
+
     totalAmt.textContent = '₹' + amount.toString();
-    new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
-      type: "warning",
-      text: "You received a discount of \u20B9".concat(res.data.discount),
-      timeout: 1000
-    }).show();
   });
 }
 

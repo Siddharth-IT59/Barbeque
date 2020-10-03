@@ -46,7 +46,7 @@ const sendOrderMail = (order) => {
     const mailOptions = {
         from: '0206it181059@ggits.net',
         to: 'siddharthkesharwani14@gmail.com',
-        subject: 'Sending Email using Node.js',
+        subject: 'Bill',
         html: `<!DOCTYPE html>
         <html>
         <head>
@@ -72,8 +72,7 @@ const sendOrderMail = (order) => {
             <th>Price</th>
           </tr>
             ${renderItems(order.items)}
-            ${getTotal(order.items,order.promoCode)}
-          
+            ${getTotal(order.items,order.promoCode)}  
         </table>
         
         </body>

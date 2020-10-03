@@ -24,7 +24,7 @@ function updateCart(dish){
         new Noty({
             type: "warning",
             text: 'Added to cart',
-            timeout:2000
+            timeout:1000
         }).show()
     })
 }
