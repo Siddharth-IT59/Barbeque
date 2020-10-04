@@ -1,21 +1,13 @@
 import axios from 'axios'
 import Noty from 'noty'
 import { initAdmin } from './admin'
-import { initPromo } from './script'
+import { initPromo,removeDish } from './script'
 import moment from 'moment'
 
 let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
 let applyBtn = document.querySelector('#apply-promo')
-
-// function initPromo(code){
-//     console.log('hi')
-//     let promo_code = { coupon: code }
-//     //applyPromo(promo_code)
-//     axios.post('/promo-code',promo_code).then((res) => {
-//         console.log(res.data.discount)
-//     })
-// }
+let cancelBtn = document.querySelectorAll('.cancel')
 
 function updateCart(dish){
     axios.post('/update-cart', dish).then((res) => {
@@ -38,6 +30,12 @@ addToCart.forEach((btn) => {
     })
 })
 
+cancelBtn.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        removeDish(btn.value)
+    })
+})
+
 // remove alert of order placed
 const alertMsg = document.querySelector('#success-alert')
 if(alertMsg){
@@ -53,6 +51,7 @@ if(applyBtn){
         initPromo(code)
     })
 }
+
 
 //initAdmin()
 

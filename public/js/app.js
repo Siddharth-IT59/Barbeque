@@ -26575,14 +26575,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var addToCart = document.querySelectorAll('.add-to-cart');
 var cartCounter = document.querySelector('#cartCounter');
-var applyBtn = document.querySelector('#apply-promo'); // function initPromo(code){
-//     console.log('hi')
-//     let promo_code = { coupon: code }
-//     //applyPromo(promo_code)
-//     axios.post('/promo-code',promo_code).then((res) => {
-//         console.log(res.data.discount)
-//     })
-// }
+var applyBtn = document.querySelector('#apply-promo');
+var cancelBtn = document.querySelectorAll('.cancel');
 
 function updateCart(dish) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/update-cart', dish).then(function (res) {
@@ -26602,6 +26596,11 @@ addToCart.forEach(function (btn) {
     var dish = JSON.parse(btn.dataset.dish);
     updateCart(dish);
     console.log(dish);
+  });
+});
+cancelBtn.forEach(function (btn) {
+  btn.addEventListener('click', function (e) {
+    Object(_script__WEBPACK_IMPORTED_MODULE_3__["removeDish"])(btn.value);
   });
 }); // remove alert of order placed
 
@@ -26690,12 +26689,13 @@ socket.on('orderUpdated', function (data) {
 /*!********************************!*\
   !*** ./resources/js/script.js ***!
   \********************************/
-/*! exports provided: initPromo */
+/*! exports provided: initPromo, removeDish */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initPromo", function() { return initPromo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeDish", function() { return removeDish; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
@@ -26712,7 +26712,7 @@ function changeText(text) {
 }
 
 function initPromo(code) {
-  console.log('hi');
+  code = code.toUpperCase();
   var promo_code = {
     coupon: code
   };
@@ -26743,6 +26743,14 @@ function initPromo(code) {
       var _text2 = "Invalid promo code.";
       changeText(_text2);
     }
+  });
+}
+function removeDish(dishId) {
+  var dish = {
+    id: dishId
+  };
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/remove-from-cart', dish).then(function (res) {
+    window.location.reload();
   });
 }
 

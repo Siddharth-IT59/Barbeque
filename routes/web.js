@@ -22,6 +22,7 @@ const initRoutes = (app) => {
     // Customer Routes
     app.post('/orders',auth, orderController().store)
     app.post('/cancel-order',auth, orderController().cancel)
+    app.post('/remove-from-cart',auth, orderController().removeFromCart)
     app.post('/promo-code',auth, orderController().applyPromoCode)
     app.get('/customer/orders',auth, orderController().index)
     app.get('/customer/orders/:id',auth, orderController().show)

@@ -10,7 +10,7 @@ function changeText(text){
 }
 
 export function initPromo(code){
-    console.log('hi')
+    code = code.toUpperCase()
     var promo_code = { coupon: code }
     console.log(JSON.stringify(promo_code))
 
@@ -41,4 +41,9 @@ export function initPromo(code){
     })
 }
 
-
+export function removeDish(dishId){
+    var dish = { id: dishId }
+    axios.post('/remove-from-cart',dish).then((res) => {
+        window.location.reload()
+    })
+}

@@ -80,7 +80,25 @@ const orderController = () => {
             req.session.cart.discount = promo.discount 
             //req.session.cart.totalPrice = req.session.cart.totalPrice - promo.discount
             return res.json({ discount: req.session.cart.discount , totalPrice: req.session.cart.totalPrice})
-        }
+        },
+        async removeFromCart(req, res){
+            const { id } = req.body
+        
+            var price = req.session.cart.items[id].item.price
+            const qty = req.session.cart.items[id].qty
+            if(qty>1){
+                price = price*qty
+            }
+            delete req.session.cart.items[id]
+            
+            req.session.cart.totalPrice = req.session.cart.totalPrice - price 
+            if(req.session.cart.totalPrice === 0){
+                delete req.session.cart
+                return res.redirect('/')
+            }
+            req.session.cart.totalQty = req.session.cart.totalQty - qty 
+            return res.json({ cart: req.session.cart })
+        } 
     }
 }
 
