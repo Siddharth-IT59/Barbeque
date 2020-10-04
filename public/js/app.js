@@ -26655,8 +26655,7 @@ function updateStatus(order) {
 
 updateStatus(order); // Socket
 
-var socket = io();
-Object(_admin__WEBPACK_IMPORTED_MODULE_2__["initAdmin"])(socket);
+var socket = io(); //initAdmin(socket)
 
 if (order) {
   //creating private room for a particular order
@@ -26666,6 +26665,7 @@ if (order) {
 var adminPath = window.location.pathname;
 
 if (adminPath.includes('admin')) {
+  Object(_admin__WEBPACK_IMPORTED_MODULE_2__["initAdmin"])(socket);
   socket.emit('join', 'adminRoom');
 }
 
@@ -26711,12 +26711,7 @@ function changeText(text) {
   }).show();
 }
 
-function initPromo(code) {
-  code = code.toUpperCase();
-  var promo_code = {
-    coupon: code
-  };
-  console.log(JSON.stringify(promo_code));
+function applyPromo(promo_code) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/promo-code', promo_code).then(function (res) {
     console.log(JSON.stringify(res.data.totalPrice));
     var subTotal = res.data.totalPrice;
@@ -26744,6 +26739,15 @@ function initPromo(code) {
       changeText(_text2);
     }
   });
+}
+
+function initPromo(code) {
+  code = code.toUpperCase();
+  var promo_code = {
+    coupon: code
+  };
+  console.log(JSON.stringify(promo_code));
+  applyPromo(promo_code);
 }
 function removeDish(dishId) {
   var dish = {

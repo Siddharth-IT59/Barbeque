@@ -89,7 +89,7 @@ updateStatus(order)
 
 // Socket
 let socket = io()
-initAdmin(socket)
+//initAdmin(socket)
 if(order){
     //creating private room for a particular order
     socket.emit('join',`order_${order._id}`)
@@ -97,6 +97,7 @@ if(order){
 
 let adminPath = window.location.pathname
 if(adminPath.includes('admin')){
+    initAdmin(socket)
     socket.emit('join','adminRoom')
 }
 

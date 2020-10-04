@@ -9,11 +9,7 @@ function changeText(text){
     }).show()    
 }
 
-export function initPromo(code){
-    code = code.toUpperCase()
-    var promo_code = { coupon: code }
-    console.log(JSON.stringify(promo_code))
-
+function applyPromo(promo_code){
     axios.post('/promo-code',promo_code).then((res) => {
         console.log(JSON.stringify(res.data.totalPrice))
         let subTotal = res.data.totalPrice
@@ -39,6 +35,13 @@ export function initPromo(code){
             changeText(text)
         }    
     })
+}
+
+export function initPromo(code){
+    code = code.toUpperCase()
+    var promo_code = { coupon: code }
+    console.log(JSON.stringify(promo_code))
+    applyPromo(promo_code)
 }
 
 export function removeDish(dishId){
