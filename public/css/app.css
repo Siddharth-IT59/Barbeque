@@ -355,6 +355,14 @@ nav li a:hover {
   outline: none;
 }
 
+.hover-style:hover {
+  box-shadow: 5px 5px 18px #6e6d6d;
+}
+
+.shadow-effect {
+  text-shadow: 2px 2px 4px #999393;
+}
+
 .btn-primary {
   background: #ee4f4f;
   transition: all 0.2s ease-in-out;

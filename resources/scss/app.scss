@@ -44,6 +44,16 @@ nav li a {
     }
 }
 
+.hover-style{
+    &:hover{
+        box-shadow: 5px 5px 18px #6e6d6d;
+    }
+}
+
+.shadow-effect{
+    text-shadow: 2px 2px 4px #999393;
+}
+
 .btn-primary{
     background: $primary ;
     transition: $smooth ;

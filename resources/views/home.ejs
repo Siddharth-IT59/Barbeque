@@ -2,10 +2,9 @@
         <div class="container mx-auto flex items-center justify-between">
             <div class="w-1/2">
                 <h6 class="text-lg"><em>Craving for something ?</em></h6>
-                <h1 class="text-6xl font-bold mb-16">Order Now 🤤</h1>
-                <!-- <button class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary">Order Now</button> -->
+                <h1 class="text-6xl shadow-effect font-bold mb-16">Order Now 🤤</h1>
                 <h3 class="text-2xl font-bold mb-4">Our Speciality</h3>
-                <div class="w-64 h-auto rounded overflow-hidden shadow-lg bg-gray-100">
+                <div class="w-64 h-auto hover-style rounded overflow-hidden shadow-lg bg-gray-100">
                     <img class="w-full" src="/img/biryani.jpg" alt="">
                     <div class="px-6 py-4">
                         <div class="font-bold text-xl mb-2 text-center ">Chicken Biryani</div>
@@ -111,12 +110,12 @@
             <h1 class="text-xl font-bold mb-8">Menu</h1>
             <div class="grid grid-cols-4 col-gap-12 row-gap-8">
                 <% dishes.forEach((dish) => { %>    
-                <div class="w-64 shadow-2xl bg-orange-100 rounded-t-none mb-8">
-                    <img class="h-50 mb-4 mx-auto rounded-t-none" src="/img/menu/<%= dish.image %>" alt="">
-                    <div class="text-center bg-orange-100 rounded-t-none">
+                <div class="w-64 hover-style shadow-2xl bg-orange-200 rounded-t-none mb-8">
+                    <img class="h-90 mb-2 mx-auto rounded-t-none" src="/img/menu/<%= dish.image %>" alt="">
+                    <div class="text-center bg-orange-200 rounded-t-none">
                         <h2 class="mb-2 text-lg font-bold"><%= dish.name %></h2>
-                        <span class="size py-1 px-4 rounded-full uppercase text-sm"><%= dish.size %></span>
-                        <div class="flex items-center bg-orange-100 justify-around mt-3 mb-4 rounded-full">
+                        <span class="size py-1 px-4 rounded-full uppercase text-xs"><%= dish.size %></span>
+                        <div class="flex items-center bg-orange-200 justify-around mt-3 mb-4 rounded-full">
                             <span class="font-bold text-lg">₹<%= dish.price %></span>
                             <button data-dish="<%= JSON.stringify(dish) %>"
                                 class="add-to-cart text-center py-1 px-4 rounded-full flex items-center font-bold">
@@ -156,9 +155,9 @@
 
             <h1 class="text-2xl font-bold mb-4">Reviews & Ratings</h1>
             <div class="grid grid-cols-4 col-gap-12 row-gap-16 mb-6 ml-8">
-                <div class="w-64 shadow-2xl bg-gray-300 mb-4 rounded">
+                <div class="w-64 hover-style shadow-2xl bg-gray-300 mb-4 rounded">
                     <img class="h-50 mb-4 mx-auto card mt-4" src="/img/icons/aadmi.png" alt="">
-                    <div class="text-center mb-6">
+                    <div class="text-center mb-2">
                         <h2 class="mb-4 text-lg font-bold">Yash</h2>
                         <h2>⭐⭐⭐⭐⭐</h2><br />
                         <p>We enjoyed the food , it was really<br />
@@ -168,7 +167,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="w-64 shadow-2xl bg-gray-300 mb-4 rounded">
+                <div class="w-64 hover-style shadow-2xl bg-gray-300 mb-4 rounded">
                     <img class="h-50 mb-4 mx-auto card mt-4" src="/img/icons/aurat.png" alt="">
                     <div class="text-center mb-6">
                         <h2 class="mb-4 text-lg font-bold">Shreya Kesharwani</h2>
@@ -179,7 +178,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="w-64 shadow-2xl bg-gray-300 mb-4 rounded">
+                <div class="w-64 hover-style shadow-2xl bg-gray-300 mb-4 rounded">
                     <img class="h-50 mb-4 mx-auto card mt-4" src="/img/icons/aadmi.png" alt="">
                     <div class="text-center mb-6">
                         <h2 class="mb-4 text-lg font-bold">Virat Kohli</h2>
@@ -192,7 +191,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="w-64 shadow-2xl bg-gray-300 mb-4 rounded">
+                <div class="w-64 hover-style shadow-2xl bg-gray-300 mb-4 rounded">
                     <img class="h-50 mb-4 mx-auto card mt-4" src="/img/icons/aurat.png" alt="">
                     <div class="text-center mb-6">
                         <h2 class="mb-4 text-lg font-bold">Sameer Ansari</h2>
