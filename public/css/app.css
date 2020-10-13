@@ -359,6 +359,11 @@ nav li a:hover {
   box-shadow: 5px 5px 18px #6e6d6d;
 }
 
+.hover-btn {
+  width: 25px;
+  height: 25px;
+}
+
 .shadow-effect {
   text-shadow: 2px 2px 4px #999393;
 }

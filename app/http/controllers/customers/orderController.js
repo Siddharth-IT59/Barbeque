@@ -66,11 +66,8 @@ const orderController = () => {
         async applyPromoCode(req, res){
             delete req.session.promo
             delete req.session.cart.discount
-            console.log(req.body)
-            console.log(req.body.coupon)
-            //delete req.session.promo
+            
             const promo = await Promo.findOne({ code: req.body.coupon })
-            console.log(promo)
             if(!promo){
                 req.flash('error','Invalid Promo Code')
                 return res.redirect('/cart')

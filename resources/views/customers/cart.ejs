@@ -2,7 +2,7 @@
     <% if(session.cart){ %>
     <div class="order conatiner mx-auto w-1/2">
         <div class="flex items-center border-b border-gray-300 pb-4">
-            <img src="/img/cart.png" style="width:24px; height:24px;" alt="">
+            <img src="/img/cart.png" style="width:30px; height:30px;" alt="">
             <h1 class="font-bold ml-4 text-2xl">Order Summary</h1>
         </div>
         <div class="food-list">
@@ -15,7 +15,7 @@
                 </div>
                 <span class="flex-1 ml-8 mr-4"><%= dish.qty %></span>
                 <span class="font-bold text-lg mr-2">₹<%= dish.item.price*dish.qty %></span>
-                <button value="<%= dish.item._id %>" class="cancel btn-primary flex-2 ml-8 px-4 py-3 rounded-full text-white font-bold mt-2">Remove</button>
+                <button value="<%= dish.item._id %>" class="cancel inline-block flex-2 ml-8 px-4 py-3 rounded-full text-white font-bold mt-2"><img class="hover-btn" src="/img/icons/cancel.png" alt=""></button>
             </div>
             <% } %>
         </div>
@@ -42,7 +42,7 @@
                     <input name="address" class="border border-gray-400 p-2 w-1/2" type="text" placeholder="Address">
                     <input name="promoCode" type="hidden" id="pcode">
                     <div>
-                        <button type="submit" class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Order
+                        <button type="submit" class="inline-block btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Order
                             Now</button>
                     </div>
                 </form>
