@@ -13,9 +13,11 @@ const orderController = () => {
                 req.flash('error','All fields mandatory !')
                 return res.redirect('/cart')
             }
+            let total = req.session.cart.discount ? req.session.cart.totalPrice - req.session.cart.discount : req.session.cart.totalPrice    
             const order = new Order({
                 customerId: req.user._id,
                 items: req.session.cart.items,
+                total: total,
                 phone: phone,
                 address: address,
                 promoCode: promoCode

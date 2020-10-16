@@ -360,11 +360,19 @@ nav li a:hover {
 }
 
 .zoom {
-  transition: transform 0.2s;
+  transition: transform 0.4s;
 }
 
 .zoom:hover {
   transform: scale(1.1);
+}
+
+.img-zoom {
+  transition: transform 0.4s;
+}
+
+.img-zoom:hover {
+  transform: scale(1.2);
 }
 
 .hover-btn {

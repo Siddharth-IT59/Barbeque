@@ -64,7 +64,7 @@ const sendOrderMail = (order) => {
         </style>
         </head>
         <body>
-        
+        <h1>Thanks for choosing us !</h1>
         <table style="width:40%; margin:50px auto;">
           <tr>
             <th>Item</th>

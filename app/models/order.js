@@ -10,6 +10,10 @@ const orderSchema = new mongoose.Schema({
         type: Object,
         required: true
     },
+    total:{
+        type: Number,
+        required: true
+    },
     phone:{
         type: String,
         required: true,

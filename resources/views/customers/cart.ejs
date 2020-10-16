@@ -8,14 +8,14 @@
         <div class="food-list">
             <% for(let dish of Object.values(session.cart.items)){ %>
             <div class="flex items-center my-8"> 
-                <img class="w-20 flex-1 ml-4 rounded" src="/img/menu/<%= dish.item.image %>" alt="">
+                <img class="w-20 img-zoom flex-1 ml-4 rounded" src="/img/menu/<%= dish.item.image %>" alt="">
                 <div class="flex-1 ml-8 mr-4">
                     <h1 class="font-bold text-xl"><%= dish.item.name %></h1>
                     <span class="uppercase text-gray-700"><%= dish.item.size %></span>
                 </div>
                 <span class="flex-1 ml-8 mr-4"><%= dish.qty %></span>
                 <span class="font-bold text-lg mr-2">₹<%= dish.item.price*dish.qty %></span>
-                <button value="<%= dish.item._id %>" class="cancel inline-block flex-2 ml-8 px-4 py-3 rounded-full text-white font-bold mt-2"><img class="hover-btn" src="/img/icons/cancel.png" alt=""></button>
+                <button value="<%= dish.item._id %>" class="cancel img-zoom inline-block flex-2 ml-8 px-4 py-3 rounded-full text-white font-bold mt-2"><img class="hover-btn" src="/img/icons/cancel.png" alt=""></button>
             </div>
             <% } %>
         </div>
