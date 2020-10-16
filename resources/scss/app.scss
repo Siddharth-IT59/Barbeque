@@ -50,6 +50,13 @@ nav li a {
     }
 }
 
+.zoom{
+    transition: transform .2s;
+    &:hover{
+        transform: scale(1.1); 
+    }
+}
+
 .hover-btn{
     width: 25px ;
     height: 25px ;

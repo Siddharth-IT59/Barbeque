@@ -2,7 +2,8 @@
     <div class="container mx-auto">
         <div class="status-box w-2/3 mx-auto">
             <div class="flex items-center justify-between mb-6">
-                <h1 class="text-xl font-bold">Live status</h1>
+                <span><img class="w-6 mr-2" src="/img/icons/tracking.png" alt=""></span>
+                <h1 class="flex-1 text-xl font-bold">Live status</h1>
                 <h6 class="bg-gray py-1 rounded-full px-4 text-green-600 text-xs"><%= order._id %></h6>
                 <input id="hiddenInput" type="hidden" value="<%= JSON.stringify(order) %>">
             </div>
