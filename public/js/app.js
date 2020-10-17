@@ -28099,10 +28099,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function getCoupon() {
-  return {
-    promoCode: document.querySelector('#promo-code').value,
-    promoValue: document.querySelector('#promo-value').value
-  };
+  if (document.querySelector('#promo-code').value && document.querySelector('#promo-value').value) {
+    return {
+      promoCode: document.querySelector('#promo-code').value,
+      promoValue: document.querySelector('#promo-value').value
+    };
+  } else {
+    changeText('Invalid Input');
+  }
 }
 
 function clear() {
@@ -28126,9 +28130,11 @@ function addDiscount() {
     addBtn.addEventListener('click', function (e) {
       var coupon = getCoupon();
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/add-promo-code', coupon).then(function (res) {
-        var text = "".concat(res.data.code, " activated !");
-        changeText(text);
-        clear();
+        if (res.data.code) {
+          var text = "".concat(res.data.code, " activated !");
+          changeText(text);
+          clear();
+        }
       })["catch"](function (err) {
         console.log(err);
       });

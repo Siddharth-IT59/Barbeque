@@ -4,9 +4,13 @@ import { PromiseProvider } from 'mongoose'
 import Noty from 'noty'
 
 function getCoupon(){
-    return {
-        promoCode: document.querySelector('#promo-code').value,
-        promoValue: document.querySelector('#promo-value').value
+    if(document.querySelector('#promo-code').value && document.querySelector('#promo-value').value){
+        return {
+            promoCode: document.querySelector('#promo-code').value,
+            promoValue: document.querySelector('#promo-value').value
+        }
+    }else{
+        changeText('Invalid Input')
     }    
 }
 function clear(){
@@ -29,9 +33,11 @@ export function addDiscount(){
         addBtn.addEventListener('click', (e) => {
             var coupon = getCoupon()
             axios.post('/add-promo-code',coupon).then((res) => {
-                let text = `${res.data.code} activated !`
-                changeText(text)
-                clear()
+                if(res.data.code){
+                    let text = `${res.data.code} activated !`
+                    changeText(text)
+                    clear()
+                }
             }).catch((err) => {
                 console.log(err)
             })

@@ -1,4 +1,4 @@
-<section class="login flex justify-center pt-24">
+<section class="login flex justify-center pt-20">
     <div class="w-full max-w-xs bg-white shadow-md rounded px-8 pt-6 pb-8 mb-64">
             <% if(messages.error){ %>
                 <span class="text-red-500 text-sm"><%= messages.error %></span>
@@ -20,7 +20,7 @@
                 <input
                     name="code"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="promo-code" type="text" placeholder="Enter promo code">
+                    id="promo-code" type="text" placeholder="Enter promo code eg. BBQ50">
             </div>
         
             <div class="mb-4">
@@ -32,7 +32,7 @@
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="promo-value" type="text" placeholder="Enter value">
             </div>
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between mt-8">
                 <button
                     class="btn-primary add rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit">
@@ -44,5 +44,8 @@
                     Disable
                 </button>
             </div>
+            <p class="text-center text-gray-500 mt-6 text-xs">
+                &copy;2020 Siddharth. All rights reserved.
+            </p>
     </div>
 </section>
