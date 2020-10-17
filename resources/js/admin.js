@@ -1,6 +1,82 @@
 import axios from 'axios'
 import moment from 'moment'
+import { PromiseProvider } from 'mongoose'
 import Noty from 'noty'
+
+function getCoupon(){
+    return {
+        promoCode: document.querySelector('#promo-code').value,
+        promoValue: document.querySelector('#promo-value').value
+    }    
+}
+function clear(){
+    document.querySelector('#promo-code').value = ''
+    document.querySelector('#promo-value').value = ''
+}
+function changeText(text){
+    new Noty({
+        type: "warning",
+        text: text,
+        timeout:1000
+    }).show()    
+}
+
+
+export function addDiscount(){
+    let addBtn = document.querySelector('.add')
+    let disableBtn = document.querySelector('.disable')
+    if(addBtn){
+        addBtn.addEventListener('click', (e) => {
+            var coupon = getCoupon()
+            axios.post('/add-promo-code',coupon).then((res) => {
+                let text = `${res.data.code} activated !`
+                changeText(text)
+                clear()
+            }).catch((err) => {
+                console.log(err)
+            })
+        })
+    }
+    if(disableBtn){
+        disableBtn.addEventListener('click', (e) => {
+            var coupon = getCoupon()
+            console.log(coupon)
+            axios.post('/disable-promo-code',coupon).then((res) => {
+                let text = ''
+                if(res.data.status){
+                    text = `${res.data.status}`
+                }else if(res.data.promo.code){
+                    text = `${res.data.promo.code} deactivated !`
+                }
+                changeText(text)
+                clear()
+            }).catch((err) => {
+                console.log(err)
+            })
+        })
+    }
+}
+
+export function dropdown(){
+    let dropdown = document.querySelector('.dropdown')
+    dropdown.addEventListener('click', (e) => {
+        axios.get('/active-codes').then((res) => {
+            let options = document.querySelectorAll('option')
+            if(options){
+                options.forEach((option) => {
+                    option.remove()
+                })
+            }
+            let promos = res.data.promos
+            promos.forEach((promo) => {
+                let option = document.createElement('option')
+                option.value = promo.code
+                option.text = promo.code
+                dropdown.add(option)
+            })
+        })
+    })
+}
 
 export function initAdmin(socket) {
     const orderTableBody = document.querySelector('#orderTableBody')
@@ -100,3 +176,4 @@ export function initAdmin(socket) {
         orderTableBody.innerHTML = generateMarkup(orders)
     })
 }
+

@@ -1,4 +1,5 @@
 const Order = require('../../../models/order')
+const Promo = require('../../../models/promo')
 
 const orderController = () => {
     return {
@@ -11,6 +12,44 @@ const orderController = () => {
                     return res.render('admin/orders')
                 }
             })
+        },
+        promoCode(req, res){
+            return res.render('admin/discounts')
+        },
+        async addCode(req, res){
+            console.log(req.body)
+            const promo = new Promo({
+                code: req.body.promoCode,
+                discount: req.body.promoValue
+            })
+            try{
+                await promo.save()
+                return res.json({ code: req.body.promoCode })
+            }catch(e){
+                return res.json({ status: 'Cannot add !' })
+            }
+        },
+        async disableCode(req, res){
+            try{
+                const promo = await Promo.findOneAndDelete({ code: req.body.promoCode, discount: req.body.promoValue})
+                if(!promo){
+                    return res.json({ status: 'Invalid Code !' })
+                }
+                return res.json({ promo: promo })
+            }catch(e){
+                return res.json({ status: 'Operation Failed' })
+            }    
+        },
+        async getActiveCodes(req, res){
+            try{
+                const promos = await Promo.find({})
+                if(!promos){
+                    return res.json({ status: 'No active codes' })
+                }
+                return res.json({ promos: promos })
+            }catch(e){
+                return res.json({ status: 'Error !' })
+            }
         }
     }
 }

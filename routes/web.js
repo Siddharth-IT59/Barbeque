@@ -29,6 +29,10 @@ const initRoutes = (app) => {
 
     // Admin Routes
     app.get('/admin/orders', admin, adminOrderController().index)
+    app.get('/promocodes', admin, adminOrderController().promoCode)
+    app.get('/active-codes', admin, adminOrderController().getActiveCodes)
+    app.post('/add-promo-code',admin,adminOrderController().addCode)
+    app.post('/disable-promo-code',admin,adminOrderController().disableCode)
     app.post('/admin/order/status', admin, statusController().update)
 }
 

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Noty from 'noty'
-import { initAdmin } from './admin'
+import { initAdmin,addDiscount,dropdown } from './admin'
 import { initPromo,removeDish } from './script'
 import moment from 'moment'
 
@@ -94,7 +94,9 @@ if(order){
     //creating private room for a particular order
     socket.emit('join',`order_${order._id}`)
 }
-
+dropdown()
+addDiscount()
+    
 let adminPath = window.location.pathname
 if(adminPath.includes('admin')){
     initAdmin(socket)
