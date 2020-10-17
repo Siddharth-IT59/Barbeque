@@ -62,6 +62,9 @@ app.set('views', path.join(__dirname,'/resources/views'))
 app.set('view engine', 'ejs')
 
 initRoutes(app)
+app.use((req, res) => {
+    res.status(404).render('error')
+})
 
 const server = app.listen(port, () => {
     console.log(`Server started at port ${port}`)
