@@ -28164,25 +28164,28 @@ function addDiscount() {
 }
 function dropdown() {
   var dropdown = document.querySelector('.dropdown');
-  dropdown.addEventListener('click', function (e) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/active-codes').then(function (res) {
-      var options = document.querySelectorAll('option');
 
-      if (options) {
-        options.forEach(function (option) {
-          option.remove();
+  if (dropdown) {
+    dropdown.addEventListener('click', function (e) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/active-codes').then(function (res) {
+        var options = document.querySelectorAll('option');
+
+        if (options) {
+          options.forEach(function (option) {
+            option.remove();
+          });
+        }
+
+        var promos = res.data.promos;
+        promos.forEach(function (promo) {
+          var option = document.createElement('option');
+          option.value = promo.code;
+          option.text = promo.code;
+          dropdown.add(option);
         });
-      }
-
-      var promos = res.data.promos;
-      promos.forEach(function (promo) {
-        var option = document.createElement('option');
-        option.value = promo.code;
-        option.text = promo.code;
-        dropdown.add(option);
       });
     });
-  });
+  }
 }
 function initAdmin(socket) {
   var orderTableBody = document.querySelector('#orderTableBody');

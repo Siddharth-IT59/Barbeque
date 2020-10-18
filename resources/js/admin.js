@@ -65,23 +65,25 @@ export function addDiscount(){
 
 export function dropdown(){
     let dropdown = document.querySelector('.dropdown')
-    dropdown.addEventListener('click', (e) => {
-        axios.get('/active-codes').then((res) => {
-            let options = document.querySelectorAll('option')
-            if(options){
-                options.forEach((option) => {
-                    option.remove()
+    if(dropdown){
+        dropdown.addEventListener('click', (e) => {
+            axios.get('/active-codes').then((res) => {
+                let options = document.querySelectorAll('option')
+                if(options){
+                    options.forEach((option) => {
+                        option.remove()
+                    })
+                }
+                let promos = res.data.promos
+                promos.forEach((promo) => {
+                    let option = document.createElement('option')
+                    option.value = promo.code
+                    option.text = promo.code
+                    dropdown.add(option)
                 })
-            }
-            let promos = res.data.promos
-            promos.forEach((promo) => {
-                let option = document.createElement('option')
-                option.value = promo.code
-                option.text = promo.code
-                dropdown.add(option)
             })
         })
-    })
+    }
 }
 
 export function initAdmin(socket) {
