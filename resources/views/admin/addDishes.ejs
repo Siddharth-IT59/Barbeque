@@ -1,0 +1,63 @@
+<section class="login flex justify-center pt-20">
+    <div class="w-full max-w-sm">
+        <form action="/dishes/add-dish" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <% if(messages.error){ %>
+                <span class="text-red-500 text-sm"><%= messages.error %></span>
+            <% } else if(messages.success){%>
+                <span class="text-red-500 text-sm"><%= messages.success %></span>
+            <% } %>    
+            <div class="text-xl font-bold mb-8">
+                <h1>Add new dish</h1>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="dish">
+                    Dish
+                </label>
+                <input
+                    name="dishName"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="dish-name" type="text" placeholder="Enter name of a dish">
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+                    Image
+                </label>
+                <input
+                    name="dishImage"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="dish-name" type="file" placeholder="Choose an image">
+            </div>
+        
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="size">
+                    Size
+                </label>
+                <input
+                    name="dishSize" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="dish-size" type="text" placeholder="Enter size">
+            </div>
+            <div class="mb-2">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
+                    Price
+                </label>
+                <input
+                    name="dishPrice" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="dish-price" type="text" placeholder="Enter price">
+            </div>
+            
+            <div class="items-center text-center mt-4">
+                <button
+                    class="btn-primary items-center add rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit">
+                    Add
+                </button>
+            </div>
+            <p class="text-center text-gray-500 mt-6 text-xs">
+                &copy;2020 Siddharth. All rights reserved.
+            </p>
+        </form>
+    </div>
+</section>

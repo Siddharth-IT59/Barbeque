@@ -25,6 +25,29 @@ function changeText(text){
     }).show()    
 }
 
+function getDish(){
+    return {
+        id: document.querySelector('#dish-id').value,
+        name: document.querySelector('#dish-name').value,
+        price: document.querySelector('#dish-price').value,
+        size: document.querySelector('#dish-size').value
+    }
+}
+
+export function saveChanges(){
+    let saveBtn = document.querySelector('.save-btn')
+    if(saveBtn){
+        saveBtn.addEventListener('click', (e) => {
+            var dish = getDish()
+            axios.post('/dishes/save',dish).then((res) => {
+                if(res.data.status){
+                    let text = 'Changes saved successfully !'
+                    changeText(text)
+                }
+            })
+        })
+    }
+}
 
 export function addDiscount(){
     let addBtn = document.querySelector('.add')

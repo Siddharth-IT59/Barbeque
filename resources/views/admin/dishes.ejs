@@ -1,0 +1,47 @@
+<section class="orders light-section">
+    <div class="container mx-auto pt-12">
+        <h1 class="font-bold text-xl mb-4">Dishes</h1>
+        <% if(messages.error){ %>
+        <div id="success-alert" class="flex items-center bg-red-500 text-white text-sm font-bold px-4 py-3" role="alert">
+            <p><%= messages.error %></p>
+        </div>
+        <% } %>
+        <table class="w-full shadow-2xl mb-8 table-auto bg-gray-200">
+            <thead class="border">
+                <tr class="text-lg">
+                    <th class="px-4 py-2 text-left">Dish Id</th>
+                    <th class="px-4 py-2 text-left">Dish</th>
+                    <th class="px-4 py-2 text-left">Price</th>
+                    <th class="px-4 py-2 text-left">Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(dishes.length){ %>
+                    <% dishes.forEach((dish) => { %>
+                        <tr>
+                            <td class="border px-4 py-2">
+                                <a href="/dishes/<%= dish._id %>" class="link"><%= dish._id %></a>
+                            </td>
+                            <td class="border px-4 py-2">
+                                <%= dish.name %>
+                            </td>
+                            <td class="border px-4 py-2">
+                                <%= dish.price %>
+                            </td>
+                            <td class="border px-4 py-2">
+                                <%= dish.size %>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% }else{%>
+                    <tr>
+                        <td class="p-4"><span>No dishes found</span></td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+        <div class="text-center mb-16"> 
+            <a href="/dishes/add" class="inline-block px-6 py-2 rounded-full btn-primary text-white font-bold mt-2">Add Dish</a>
+        </div>    
+    </div>
+</section>

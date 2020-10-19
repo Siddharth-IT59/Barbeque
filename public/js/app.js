@@ -28077,11 +28077,12 @@ module.exports = function(module) {
 /*!*******************************!*\
   !*** ./resources/js/admin.js ***!
   \*******************************/
-/*! exports provided: addDiscount, dropdown, initAdmin */
+/*! exports provided: saveChanges, addDiscount, dropdown, initAdmin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveChanges", function() { return saveChanges; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addDiscount", function() { return addDiscount; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dropdown", function() { return dropdown; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initAdmin", function() { return initAdmin; });
@@ -28122,6 +28123,30 @@ function changeText(text) {
   }).show();
 }
 
+function getDish() {
+  return {
+    id: document.querySelector('#dish-id').value,
+    name: document.querySelector('#dish-name').value,
+    price: document.querySelector('#dish-price').value,
+    size: document.querySelector('#dish-size').value
+  };
+}
+
+function saveChanges() {
+  var saveBtn = document.querySelector('.save-btn');
+
+  if (saveBtn) {
+    saveBtn.addEventListener('click', function (e) {
+      var dish = getDish();
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/dishes/save', dish).then(function (res) {
+        if (res.data.status) {
+          var text = 'Changes saved successfully !';
+          changeText(text);
+        }
+      });
+    });
+  }
+}
 function addDiscount() {
   var addBtn = document.querySelector('.add');
   var disableBtn = document.querySelector('.disable');
@@ -28358,6 +28383,7 @@ if (order) {
 
 Object(_admin__WEBPACK_IMPORTED_MODULE_2__["dropdown"])();
 Object(_admin__WEBPACK_IMPORTED_MODULE_2__["addDiscount"])();
+Object(_admin__WEBPACK_IMPORTED_MODULE_2__["saveChanges"])();
 var adminPath = window.location.pathname;
 
 if (adminPath.includes('admin')) {
