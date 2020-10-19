@@ -375,6 +375,15 @@ nav li a:hover {
   transform: scale(1.2);
 }
 
+.admin-img-zoom {
+  transition: transform 0.4s;
+}
+
+.admin-img-zoom:hover {
+  transform: scale(1.5);
+  border-radius: 50%;
+}
+
 .hover-btn {
   width: 25px;
   height: 25px;

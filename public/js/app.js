@@ -28077,12 +28077,13 @@ module.exports = function(module) {
 /*!*******************************!*\
   !*** ./resources/js/admin.js ***!
   \*******************************/
-/*! exports provided: saveChanges, addDiscount, dropdown, initAdmin */
+/*! exports provided: saveChanges, removeDishData, addDiscount, dropdown, initAdmin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveChanges", function() { return saveChanges; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeDishData", function() { return removeDishData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addDiscount", function() { return addDiscount; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dropdown", function() { return dropdown; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initAdmin", function() { return initAdmin; });
@@ -28143,6 +28144,26 @@ function saveChanges() {
           var text = 'Changes saved successfully !';
           changeText(text);
         }
+      });
+    });
+  }
+}
+function removeDishData() {
+  var removeBtn = document.querySelector('.remove-btn');
+
+  if (removeBtn) {
+    removeBtn.addEventListener('click', function (e) {
+      var dishId = {
+        id: removeBtn.value
+      };
+      console.log(dishId);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/dishes/remove', dishId).then(function (res) {
+        if (res.data.status) {
+          var text = "".concat(res.data.status);
+          changeText(text);
+        }
+
+        window.location.href = '/dishes';
       });
     });
   }
@@ -28384,6 +28405,7 @@ if (order) {
 Object(_admin__WEBPACK_IMPORTED_MODULE_2__["dropdown"])();
 Object(_admin__WEBPACK_IMPORTED_MODULE_2__["addDiscount"])();
 Object(_admin__WEBPACK_IMPORTED_MODULE_2__["saveChanges"])();
+Object(_admin__WEBPACK_IMPORTED_MODULE_2__["removeDishData"])();
 var adminPath = window.location.pathname;
 
 if (adminPath.includes('admin')) {

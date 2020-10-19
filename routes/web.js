@@ -8,6 +8,19 @@ const statusController = require('../app/http/controllers/admin/statusController
 const guest = require('../app/http/middleware/guest')
 const auth = require('../app/http/middleware/auth')
 const admin = require('../app/http/middleware/admin')
+const sharp = require('sharp')
+
+const multer = require('multer')
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './public/img/menu/')
+    },
+    filename: async function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+  })
+const upload = multer({ storage: storage})
+
 
 const initRoutes = (app) => {
     app.get('/', homeController().index)
@@ -35,8 +48,10 @@ const initRoutes = (app) => {
     app.get('/dishes', admin, adminFeatureController().index)
     app.get('/dishes/add', admin, adminFeatureController().addPage)
     app.get('/dishes/:id', admin, adminFeatureController().showDish)
+    //app.post('/upload', admin, adminFeatureController().upload)
     app.post('/dishes/save', admin, adminFeatureController().saveChanges)
-    app.post('/dishes/add-dish', admin, adminFeatureController().store)
+    app.post('/dishes/remove', admin, adminFeatureController().removeDish)
+    app.post('/dishes/add-dish', admin, upload.single('dishImage'),adminFeatureController().store)
     app.post('/add-promo-code',admin,adminOrderController().addCode)
     app.post('/disable-promo-code',admin,adminOrderController().disableCode)
     app.post('/admin/order/status', admin, statusController().update)

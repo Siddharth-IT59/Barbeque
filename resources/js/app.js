@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Noty from 'noty'
-import { initAdmin,addDiscount,dropdown, saveChanges } from './admin'
+import { initAdmin,addDiscount,dropdown, saveChanges, removeDishData } from './admin'
 import { initPromo,removeDish } from './script'
 import moment from 'moment'
 
@@ -97,7 +97,8 @@ if(order){
 dropdown()
 addDiscount()
 saveChanges()
-    
+removeDishData()
+
 let adminPath = window.location.pathname
 if(adminPath.includes('admin')){
     initAdmin(socket)

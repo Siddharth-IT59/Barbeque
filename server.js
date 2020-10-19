@@ -1,6 +1,7 @@
 require('dotenv').config()
 const path = require('path')
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 const session = require('express-session')
 const flash = require('express-flash')
@@ -49,6 +50,9 @@ app.use(express.static(path.join(__dirname, '/public')))
 app.use(express.urlencoded({
     extended : false
 }))
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(express.json())
 // Global middleware
 app.use((req, res, next) => {

@@ -49,6 +49,24 @@ export function saveChanges(){
     }
 }
 
+export function removeDishData(){
+    let removeBtn = document.querySelector('.remove-btn')
+    if(removeBtn){
+        removeBtn.addEventListener('click', (e) => {
+            var dishId = {id: removeBtn.value}
+            console.log(dishId)
+           axios.post('/dishes/remove',dishId).then((res) => {
+                if(res.data.status){
+                    let text = `${res.data.status}`
+                    changeText(text)
+                }
+                window.location.href = '/dishes'
+            })
+         })
+    }
+}
+
+
 export function addDiscount(){
     let addBtn = document.querySelector('.add')
     let disableBtn = document.querySelector('.disable')

@@ -1,6 +1,7 @@
 const { Store } = require('express-session')
 const { findOneAndUpdate } = require('../../../models/menu')
 const Dish = require('../../../models/menu')
+const sharp = require('sharp')
 
 const adminFeatureController = () => {
     return {
@@ -16,9 +17,11 @@ const adminFeatureController = () => {
             res.render('admin/addDishes')
         },
         async store(req, res){
+            console.log(req.file.filename)
+            console.log(req.body)
             const dish = new Dish({
                 name: req.body.dishName,
-                image: 'img',
+                image: req.file.filename,
                 price: req.body.dishPrice,
                 size: req.body.dishSize,
             })
@@ -51,6 +54,18 @@ const adminFeatureController = () => {
                 if(dish){
                     return res.json({ status: 'success' })
                 }
+            }catch(e){
+                res.render('error')
+            }
+        },
+        async removeDish(req, res){
+            console.log(req.body)
+            try{
+                const dish = await Dish.findByIdAndDelete(req.body.id)
+                if(!dish){
+                    return res.json({ status: 'Could not delete' })
+                }
+                return res.redirect('/dishes')
             }catch(e){
                 res.render('error')
             }

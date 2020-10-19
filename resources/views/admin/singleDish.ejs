@@ -47,11 +47,16 @@
                     id="dish-price" type="text" value="<%= dish.price %>" placeholder="Enter price">
             </div>
             
-            <div class="items-center text-center mt-4">
+            <div class="items-center mt-6">
                 <button
-                    class="btn-primary save-btn items-center add rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    class="btn-primary mr-24 save-btn add rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit">
                     Save Changes
+                </button>
+                <button
+                    class="btn-primary remove-btn add rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    value="<%= dish.id %>" type="submit">
+                    Remove
                 </button>
             </div>
             <p class="text-center text-gray-500 mt-6 text-xs">
