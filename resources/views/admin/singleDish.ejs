@@ -1,12 +1,12 @@
 <section class="login flex justify-center pt-20">
-    <div class="w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ml-24">
             <% if(messages.error){ %>
                 <span class="text-red-500 text-sm"><%= messages.error %></span>
             <% } else if(messages.success){%>
                 <span class="text-red-500 text-sm"><%= messages.success %></span>
             <% } %>    
             <div class="text-xl font-bold mb-8">
-                <h1><%= dish.name %></h1>
+                <h1 class="uppercase"><%= dish.name %></h1>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="dishId">
@@ -14,7 +14,7 @@
                 </label>
                 <input
                     name="dishId"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-green-800 leading-tight focus:outline-none focus:shadow-outline"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-green-900 leading-tight focus:outline-none focus:shadow-outline"
                     id="dish-id" type="text" value="<%= dish.id %>" readonly>
             </div>
             

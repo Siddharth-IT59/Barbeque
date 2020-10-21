@@ -377,10 +377,12 @@ nav li a:hover {
 
 .admin-img-zoom {
   transition: transform 0.4s;
+  width: 65px;
+  height: 60px;
 }
 
 .admin-img-zoom:hover {
-  transform: scale(1.5);
+  transform: scale(2);
   border-radius: 50%;
 }
 

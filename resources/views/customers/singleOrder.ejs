@@ -14,6 +14,7 @@
                 <li class="status_line text-xl pb-16" data-status="delivered"><span>Out for delivery</span></li>
                 <li class="status_line text-xl" data-status="completed"><span>Delivered</span></li>
             </ul>
+            <% if(order.status != 'completed'){ %>    
             <div>
                 <form action="/cancel-order" method="POST" class="mt-2 ml-64">
                     <div>
@@ -21,7 +22,8 @@
                         <input type="hidden" name="order_id" value="<%= order._id %>">    
                     </div>
                 </form>
-            </div>
+            </div> 
+            <% } %>   
         </div>
     </div>
 </section>

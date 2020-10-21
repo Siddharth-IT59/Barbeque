@@ -66,8 +66,9 @@ nav li a {
 
 .admin-img-zoom{
     transition: transform .4s;
+    width: 65px; height: 60px;
     &:hover{
-        transform: scale(1.5); 
+        transform: scale(2.0); 
         border-radius: 50% ;
     }
 }

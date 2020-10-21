@@ -23,16 +23,16 @@
                             <td class="border px-4 py-2">
                                 <a href="/dishes/<%= dish._id %>" class="link"><%= dish._id %></a>
                             </td>
-                            <td class="border px-4 py-2">
+                            <td class="border px-4 py-2 ">
                                 <%= dish.name %>
                             </td>
                             <td class="border px-4 py-2">
-                                <img src="/img/menu/<%= dish.image %>" class="admin-img-zoom" style="width: 65px; height: 60px;" alt="">
+                                <img src="/img/menu/<%= dish.image %>" class="admin-img-zoom" alt="">
                             </td>
-                            <td class="border px-4 py-2">
-                                <%= dish.price %>
+                            <td class="border px-4 py-2 zoom">
+                                ₹<%= dish.price %>
                             </td>
-                            <td class="border px-4 py-2">
+                            <td class="border px-4 py-2 zoom">
                                 <%= dish.size %>
                             </td>
                         </tr>
