@@ -13,23 +13,19 @@ const renderItems = (items) => {
     }).join('')
 }
 
-const getTotal = (items, promoCode) => {
-    let parsedItems = Object.values(items)
-    let total = 0
-
-    parsedItems.forEach(itm => {
-        total = total + itm.item.price * itm.qty
-    })
-    //return `<b>₹${total}</b>  `
+const getTotal = (total, promoCode) => {
+    if(promoCode === ''){
+        promoCode = '0'
+    }
     return `<td colspan="2">Total Amount</td>
-            <td>₹${total}</td>
+            <td>₹${parseInt(total) + parseInt(promoCode)}</td>
             <tr>
             <td colspan="2">Discount</td>
             <td>₹${promoCode}</td>
             </tr>
             <tr>
             <td colspan="2">Total Payable</td>
-            <td>₹${total - promoCode}</td>
+            <td>₹${total}</td>
             </tr>
     `
 }
@@ -41,11 +37,11 @@ const sendOrderMail = (order) => {
             user: '0206it181059@ggits.net',
             pass: 'SiddharthKesh99'
         }
-    });
+    })
 
     const mailOptions = {
         from: '0206it181059@ggits.net',
-        to: 'siddharthkesharwani14@gmail.com',
+        to: 'siddharthkesharwani14@gmail.com',//order.customerId.email
         subject: 'Bill',
         html: `<!DOCTYPE html>
         <html>
@@ -72,7 +68,7 @@ const sendOrderMail = (order) => {
             <th>Price</th>
           </tr>
             ${renderItems(order.items)}
-            ${getTotal(order.items,order.promoCode)}  
+            ${getTotal(order.total,order.promoCode)}  
         </table>
         
         </body>

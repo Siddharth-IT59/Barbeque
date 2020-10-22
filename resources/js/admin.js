@@ -55,7 +55,7 @@ export function removeDishData(){
         removeBtn.addEventListener('click', (e) => {
             var dishId = {id: removeBtn.value}
             console.log(dishId)
-           axios.post('/dishes/remove',dishId).then((res) => {
+            axios.post('/dishes/remove',dishId).then((res) => {
                 if(res.data.status){
                     let text = `${res.data.status}`
                     changeText(text)
