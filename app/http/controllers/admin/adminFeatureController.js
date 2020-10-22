@@ -1,22 +1,23 @@
-const { Store } = require('express-session')
-const { findOneAndUpdate } = require('../../../models/menu')
 const Dish = require('../../../models/menu')
-const sharp = require('sharp')
+const Order = require('../../../models/order')
+const moment = require('moment')
 
 const adminFeatureController = () => {
     return {
         async index(req, res) {
             const dishes = await Dish.find({})
-            if(!dishes){
-                req.flash('error','No dishes found')
+            if (!dishes) {
+                req.flash('error', 'No dishes found')
                 res.redirect('/dishes')
             }
-            return res.render('admin/dishes',{ dishes: dishes })
+            return res.render('admin/dishes', {
+                dishes: dishes
+            })
         },
-        async addPage(req, res){
+        async addPage(req, res) {
             res.render('admin/addDishes')
         },
-        async store(req, res){
+        async store(req, res) {
             console.log(req.file.filename)
             console.log(req.body)
             const dish = new Dish({
@@ -25,50 +26,83 @@ const adminFeatureController = () => {
                 price: req.body.dishPrice,
                 size: req.body.dishSize,
             })
-            try{
+            try {
                 await dish.save()
                 //res.json({ status: 'success' })
                 return res.redirect('/dishes')
-            }catch(e){
+            } catch (e) {
                 res.redirect('/dishes')
             }
         },
-        async showDish(req, res){
-            try{
+        async showDish(req, res) {
+            try {
                 const dish = await Dish.findById(req.params.id)
-                if(!dish){
+                if (!dish) {
                     res.redirect('/dishes')
                 }
-                return res.render('admin/singleDish', {dish: dish})
-            }catch(e){
+                return res.render('admin/singleDish', {
+                    dish: dish
+                })
+            } catch (e) {
                 res.render('error')
             }
         },
-        async saveChanges(req, res){
-            try{
-                const dish = await Dish.findOneAndUpdate({ _id: req.body.id },{
+        async saveChanges(req, res) {
+            try {
+                const dish = await Dish.findOneAndUpdate({
+                    _id: req.body.id
+                }, {
                     name: req.body.name,
                     price: req.body.price,
                     size: req.body.size
-                },{ new: true })
-                if(dish){
-                    return res.json({ status: 'success' })
+                }, {
+                    new: true
+                })
+                if (dish) {
+                    return res.json({
+                        status: 'success'
+                    })
                 }
-            }catch(e){
+            } catch (e) {
                 res.render('error')
             }
         },
-        async removeDish(req, res){
+        async removeDish(req, res) {
             console.log(req.body)
-            try{
+            try {
                 const dish = await Dish.findByIdAndDelete(req.body.id)
-                if(!dish){
-                    return res.json({ status: 'Could not delete' })
+                if (!dish) {
+                    return res.json({
+                        status: 'Could not delete'
+                    })
                 }
                 return res.redirect('/dishes')
-            }catch(e){
+            } catch (e) {
                 res.render('error')
             }
+        },
+        async revenuePage(req, res) {
+            res.render('admin/revenue', {
+                orders: ''
+            })
+        },
+        async revenueByDate(req, res) {
+            const orders = await Order.find({}).populate('customerId', '-password').exec()
+            const arr = Object.values(orders)
+            let revenue = 0
+            const dateArr = arr.filter((order) => {
+                var date = req.body.date
+                var dbDate = moment(order.createdAt).format()
+                if (dbDate.toString().includes(date.toString())) {
+                    revenue = revenue + order.total
+                    return order
+                }
+            })
+            res.render('admin/revenue', {
+                orders: dateArr,
+                moment: moment,
+                revenue: revenue
+            })
         }
     }
 }

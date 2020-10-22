@@ -44,11 +44,13 @@ const initRoutes = (app) => {
 
   // Admin Routes
   app.get('/admin/orders', admin, adminOrderController().index)
+  app.get('/revenue', admin, adminFeatureController().revenuePage)
   app.get('/promocodes', admin, adminOrderController().promoCode)
   app.get('/active-codes', admin, adminOrderController().getActiveCodes)
   app.get('/dishes', admin, adminFeatureController().index)
   app.get('/dishes/add', admin, adminFeatureController().addPage)
   app.get('/dishes/:id', admin, adminFeatureController().showDish)
+  app.post('/revenue/date', admin, adminFeatureController().revenueByDate)
   app.post('/dishes/save', admin, adminFeatureController().saveChanges)
   app.post('/dishes/remove', admin, adminFeatureController().removeDish)
   app.post('/dishes/add-dish', admin, upload.single('dishImage'), adminFeatureController().store)
