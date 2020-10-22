@@ -20,6 +20,7 @@
                     <th class="px-4 py-2 text-left">Address</th>
                     <th class="px-4 py-2 text-left">Date</th>
                     <th class="px-4 py-2 text-left">Status</th>
+                    <th class="px-4 py-2 text-left">Discount</th>
                     <th class="px-4 py-2 text-left">Total</th>
                 </tr>
             </thead>
@@ -38,6 +39,10 @@
                             </td>
                             <td class="border px-4 py-2">
                                 <%= order.status %>
+                            </td>
+                            <td class="border px-4 py-2">
+                                <% order.promoCode === '' ? order.promoCode = 'null' : order.promoCode = order.promoCode %>
+                                <%= order.promoCode %>
                             </td>
                             <td class="border px-4 py-2">
                                 ₹<%= order.total %>
