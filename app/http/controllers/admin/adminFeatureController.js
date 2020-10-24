@@ -83,7 +83,8 @@ const adminFeatureController = () => {
         },
         async revenuePage(req, res) {
             res.render('admin/revenue', {
-                orders: ''
+                orders : '',
+                revenue : ''
             })
         },
         async revenueByDate(req, res) {

@@ -58,7 +58,11 @@
         </table>
         <div class="mt-4 flex flex-no-wrap">
             <p class="font-bold text-2xl flex-none">Total Revenue: </p>
-            <p class="flex-none ml-4 text-2xl">₹<%= revenue %></p>
+            <% if(revenue != ''){ %>
+                <p class="flex-none ml-4 text-2xl">₹<%= revenue %></p>
+            <% }else{ %>
+                <p class="flex-none ml-4 text-2xl">-</p>
+            <% } %>    
         </div>
     </div>
 </section>
