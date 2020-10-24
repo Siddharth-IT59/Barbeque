@@ -83,19 +83,46 @@ const adminFeatureController = () => {
         },
         async revenuePage(req, res) {
             res.render('admin/revenue', {
-                orders : '',
-                revenue : ''
+                orders: '',
+                revenue: ''
             })
         },
-        async revenueByDate(req, res) {
-            const orders = await Order.find({},null, { sort: {'createdAt': -1} }).populate('customerId', '-password').exec()
+        async revenueByMonth(req, res) {
+            const orders = await Order.find({}, null, {
+                sort: {
+                    'createdAt': -1
+                }
+            }).populate('customerId', '-password').exec()
             const arr = Object.values(orders)
-            console.log(req.body.month)
+
             let revenue = 0
             const dateArr = arr.filter((order) => {
                 var month = req.body.month
                 var dbMonth = moment(order.createdAt).format()
                 if (dbMonth.toString().includes(month.toString())) {
+                    revenue = revenue + order.total
+                    return order
+                }
+            })
+            res.render('admin/revenue', {
+                orders: dateArr,
+                moment: moment,
+                revenue: revenue
+            })
+        },
+        async revenueByDate(req, res) {
+            const orders = await Order.find({}, null, {
+                sort: {
+                    'createdAt': -1
+                }
+            }).populate('customerId', '-password').exec()
+            const arr = Object.values(orders)
+
+            let revenue = 0
+            const dateArr = arr.filter((order) => {
+                var date = req.body.date
+                var dbDate = moment(order.createdAt).format()
+                if (dbDate.toString().includes(date.toString())) {
                     revenue = revenue + order.total
                     return order
                 }

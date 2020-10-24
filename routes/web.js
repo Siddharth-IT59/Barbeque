@@ -50,6 +50,7 @@ const initRoutes = (app) => {
   app.get('/dishes', admin, adminFeatureController().index)
   app.get('/dishes/add', admin, adminFeatureController().addPage)
   app.get('/dishes/:id', admin, adminFeatureController().showDish)
+  app.post('/revenue/month', admin, adminFeatureController().revenueByMonth)
   app.post('/revenue/date', admin, adminFeatureController().revenueByDate)
   app.post('/dishes/save', admin, adminFeatureController().saveChanges)
   app.post('/dishes/remove', admin, adminFeatureController().removeDish)
