@@ -2,9 +2,9 @@
     <div class="container mx-auto pt-12">
         <div class="border">
             <form action="/revenue/date" id="revenue-form" method="POST">
-                <ul class="flex items-center px-2 py-2 bg-gray-200">
-                    <li class="ml-6 font-bold text-lg">Choose Date</li>
-                    <li class="ml-12 border"><input class="px-2 py-2" name="date" type="date"></li>
+                <ul class="flex items-center px-2 py-4 bg-gray-200">
+                    <li class="ml-3 font-bold text-lg">Choose Month</li>
+                    <li class="ml-12 border"><input class="px-2 py-2" name="month" type="month"></li>
                     <li class="ml-6 font-bold text-lg">
                         <button class="inline-block px-6 py-2 rounded btn-primary text-white font-bold" 
                         onclick="document.getElementById('revenue-form').submit()">Search</button>
@@ -16,6 +16,7 @@
         <table class="w-full shadow-2xl mb-16 table-auto bg-gray-200">
             <thead class="border">
                 <tr class="text-lg">
+                    <th class="px-4 py-2 text-left">S.No</th>
                     <th class="px-4 py-2 text-left">Customer</th>
                     <th class="px-4 py-2 text-left">Address</th>
                     <th class="px-4 py-2 text-left">Date</th>
@@ -26,9 +27,13 @@
                 </tr>
             </thead>
             <tbody>
+                <% let i = 1 %>
                 <% if(orders.length){ %>
                     <% orders.forEach((order) => { %>
                         <tr>
+                            <td class="border px-4 py-2">
+                                <%= i++ %>.
+                            </td>
                             <td class="border px-4 py-2">
                                 <%= order.customerId.name %>
                             </td>
@@ -47,7 +52,7 @@
                                     <p class="text-green-900"><%= menuItem.item.name %> x <%= menuItem.qty %>&emsp;=&emsp;₹<%= menuItem.item.price %></p>
                                 <% }) %>
                                 <% order.promoCode === '' ? order.promoCode = '0' : order.promoCode = order.promoCode %>
-                                <p class="text-green-900 font-bold">Total Payable&emsp;=&emsp;₹<%= parseInt(order.total) + parseInt(order.promoCode) %></p>
+                                <p class="text-green-900 font-bold">Total&emsp;=&emsp;₹<%= parseInt(order.total) + parseInt(order.promoCode) %></p>
                                 
                             </td>
                             <td class="border px-4 py-2">

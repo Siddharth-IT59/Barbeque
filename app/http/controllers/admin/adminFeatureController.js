@@ -88,13 +88,14 @@ const adminFeatureController = () => {
             })
         },
         async revenueByDate(req, res) {
-            const orders = await Order.find({}).populate('customerId', '-password').exec()
+            const orders = await Order.find({},null, { sort: {'createdAt': -1} }).populate('customerId', '-password').exec()
             const arr = Object.values(orders)
+            console.log(req.body.month)
             let revenue = 0
             const dateArr = arr.filter((order) => {
-                var date = req.body.date
-                var dbDate = moment(order.createdAt).format()
-                if (dbDate.toString().includes(date.toString())) {
+                var month = req.body.month
+                var dbMonth = moment(order.createdAt).format()
+                if (dbMonth.toString().includes(month.toString())) {
                     revenue = revenue + order.total
                     return order
                 }
