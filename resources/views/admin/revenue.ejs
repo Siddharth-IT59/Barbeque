@@ -20,6 +20,7 @@
                     <th class="px-4 py-2 text-left">Address</th>
                     <th class="px-4 py-2 text-left">Date</th>
                     <th class="px-4 py-2 text-left">Status</th>
+                    <th class="px-4 py-2 text-left">Items</th>
                     <th class="px-4 py-2 text-left">Discount</th>
                     <th class="px-4 py-2 text-left">Total</th>
                 </tr>
@@ -41,7 +42,15 @@
                                 <%= order.status %>
                             </td>
                             <td class="border px-4 py-2">
-                                <% order.promoCode === '' ? order.promoCode = 'null' : order.promoCode = order.promoCode %>
+                                <% var parsedItems = Object.values(order.items) %>
+                                <% parsedItems.forEach((menuItem) => { %>
+                                    <p class="text-green-900"><%= menuItem.item.name %> x <%= menuItem.qty %>&emsp;=&emsp;₹<%= menuItem.item.price %></p>
+                                <% }) %>
+                                <% order.promoCode === '' ? order.promoCode = '0' : order.promoCode = order.promoCode %>
+                                <p class="text-green-900 font-bold">Total Payable&emsp;=&emsp;₹<%= parseInt(order.total) + parseInt(order.promoCode) %></p>
+                                
+                            </td>
+                            <td class="border px-4 py-2">
                                 <%= order.promoCode %>
                             </td>
                             <td class="border px-4 py-2">
@@ -56,7 +65,7 @@
                     <% } %>
             </tbody>
         </table>
-        <div class="mt-4 flex flex-no-wrap">
+        <div class="mt-2 flex flex-no-wrap mb-16">
             <p class="font-bold text-2xl flex-none">Total Revenue: </p>
             <% if(revenue != ''){ %>
                 <p class="flex-none ml-4 text-2xl">₹<%= revenue %></p>
