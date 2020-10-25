@@ -123,10 +123,12 @@
                         <span class="size py-1 px-4 rounded-full uppercase text-xs"><%= dish.size %></span>
                         <div class="flex items-center bg-orange-200 justify-around mt-3 mb-4 rounded-full">
                             <span class="font-bold text-lg">₹<%= dish.price %></span>
-                            <button data-dish="<%= JSON.stringify(dish) %>"
-                                class="add-to-cart text-center py-1 px-4 rounded-full flex items-center font-bold">
-                                <span class="text-center">Add</span>
-                            </button>
+                            <% if(!user || user.role === 'customer') { %>
+                                <button data-dish="<%= JSON.stringify(dish) %>"
+                                    class="add-to-cart text-center py-1 px-4 rounded-full flex items-center font-bold">
+                                    <span class="text-center">Add</span>
+                                </button>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -213,25 +215,25 @@
 
             <h1 class="text-2xl font-bold mb-2">Contact Us</h1>
             <div class="inline-flex ml-8">
-                <div class="flex-1 hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
+                <div class="flex-1 zoom hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
                     style="width: 40px;height:40px;" src="/img/icons/instagram.png" alt=""></a></div>
-                <div class="flex-1 hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
+                <div class="flex-1 zoom hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
                     style="width: 40px;height:40px;" src="/img/icons/facebook.png" alt=""></a></div>
-                <div class="flex-1 hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
+                <div class="flex-1 zoom hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
                     style="width: 40px;height:40px;" src="/img/icons/whatsapp.png" alt=""></a></div>
-                <div class="flex-1 hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
+                <div class="flex-1 zoom hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
                     style="width: 40px;height:40px;" src="/img/icons/gmail.png" alt=""></a></div>
-                <div class="flex-1 hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
+                <div class="flex-1 zoom hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a href="#"><img
                     style="width: 40px;height:40px;" src="/img/icons/call.png" alt=""></a></div>
             </div>
 
             <h1 class="text-2xl font-bold mb-2 mt-8">Complaints & Queries</h1>
             <div class="inline-flex ml-8 mb-2">
-                <div class="flex-1 hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a
-                    href="https://github.com/Siddharth-IT59/Barbeque"><img style="width: 40px;height:40px;"
+                <div class="flex-1 zoom hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a
+                    href="https://github.com/Siddharth-IT59/Barbeque"><img class="" style="width: 40px;height:40px;"
                     src="/img/icons/github.png" alt=""></a>
                 </div>
-                <div class="flex-1 hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a
+                <div class="flex-1 zoom hover-style text-gray-700 text-center px-4 py-2 m-2 shadow-2xl rounded-full"><a
                     href="https://www.linkedin.com/in/siddharth-kesharwani-9471a91b2/"><img
                     style="width: 40px;height:40px;" src="/img/icons/linkedin.png" alt=""></a>
                 </div>
