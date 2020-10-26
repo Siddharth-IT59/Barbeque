@@ -1,6 +1,6 @@
 <section class="orders light-section">
     <div class="container mx-auto pt-12">
-        <div class="border flex bg-gray-200">
+        <div class="border flex bg-gray-200 cursor-pointer">
             <form action="/revenue/month" id="revenue-month-form" method="POST">
                 <ul class="flex items-center ml-6 px-2 py-4 bg-gray-200">
                     <li class="ml-3 font-bold text-xl">Choose Month :</li>
@@ -30,7 +30,7 @@
                     <th class="px-4 py-2 text-left">Address</th>
                     <th class="px-4 py-2 text-left">Date</th>
                     <th class="px-4 py-2 text-left">Status</th>
-                    <th class="px-4 py-2 text-left">Items</th>
+                    <th class="px-4 py-2 text-left">Order</th>
                     <th class="px-4 py-2 text-left">Discount</th>
                     <th class="px-4 py-2 text-left">Total</th>
                 </tr>
@@ -61,6 +61,7 @@
                             </td>
                             <td class="border px-4 py-2">
                                 <% var parsedItems = Object.values(order.items) %>
+                                <p class="text-green-900 font-bold"><%= order._id %></p>
                                 <% parsedItems.forEach((menuItem) => { %>
                                     <p class="text-green-900"><%= menuItem.item.name %> x <%= menuItem.qty %>&emsp;=&emsp;₹<%= menuItem.item.price %></p>
                                 <% }) %>

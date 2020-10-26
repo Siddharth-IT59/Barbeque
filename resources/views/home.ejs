@@ -137,6 +137,7 @@
         </section>
     </div>
 
+<% if(!user || user.role === 'customer'){ %>    
     <footer>
         <section class="menu container mx-auto py-8 ">
             <h1 class="text-2xl font-bold mb-2 mt-4">About Us</h1>
@@ -241,3 +242,4 @@
 
         </section>
     </footer>
+<% } %>    
