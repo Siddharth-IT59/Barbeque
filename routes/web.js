@@ -58,6 +58,7 @@ const initRoutes = (app) => {
   app.post('/add-promo-code', admin, adminOrderController().addCode)
   app.post('/disable-promo-code', admin, adminOrderController().disableCode)
   app.post('/admin/order/status', admin, statusController().update)
+  app.post('/admin/order/cancel', admin, adminOrderController().cancelOrder)
 }
 
 module.exports = initRoutes

@@ -204,6 +204,13 @@ export function initAdmin(socket) {
                     </div>
                 </td>
                 <td class="border px-4 py-2">
+                    <form action="/admin/order/cancel" method="POST" id="cancel-form">
+                        <button onclick="this.form.submit()" name="orderId" value="${order._id}" class="inline-block btn-primary px-6 py-2 rounded text-white font-bold mt-1">
+                            Cancel
+                        </button>
+                    </form>
+                </td>
+                <td class="border px-4 py-2">
                     ${ moment(order.createdAt).format('MMM Do YYYY, h:mm A') }
                 </td>
             </tr>

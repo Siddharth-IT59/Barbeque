@@ -3,7 +3,10 @@
 </head>
 <section class="orders light-section">
     <div class="container mx-auto pt-12">
-        <h1 class="font-bold text-xl mb-4">Order History</h1>
+        <div class="flex">
+        <h1 class="flex font-bold text-xl mb-4">Order History</h1> 
+        <span class="flex mt-1 link ml-4"><i class="text-red-400">( *click on order no. for live status. )</i></span>
+        </div>
         <% if(messages.success){ %>
         <div id="success-alert" class="flex items-center bg-red-500 text-white text-sm font-bold px-4 py-3" role="alert">
             <p><%= messages.success %></p>

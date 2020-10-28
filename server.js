@@ -90,3 +90,11 @@ eventEmitter.on('orderUpdated', (data) => {
 eventEmitter.on('orderPlaced', (data) => {
     io.to('adminRoom').emit('orderPlaced', data)
 })
+
+eventEmitter.on('orderCanceled', (data) => {
+    console.log('order cancelled')
+    if(data){
+        var notification = 'Order cancelled by the restaurant'
+        io.to(`order_${data.id}`).emit('orderCanceled', notification)
+    }
+})

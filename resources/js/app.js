@@ -117,3 +117,14 @@ socket.on('orderUpdated', (data) => {
     }).show()
     console.log(data)
 })
+
+socket.on('orderCanceled', (notification) => {
+    new Noty({
+        type: "warning",
+        text: notification,
+        timeout: 1000
+    }).show()
+    window.setTimeout(function(){
+        window.location.href = '/customer/orders'
+    },2000)
+})

@@ -52,7 +52,10 @@ const orderController = () => {
         },
         async show(req, res){
             const order = await Order.findById(req.params.id)
-            if(req.user._id.toString() === order.customerId.toString()){
+            if(!order){
+                req.flash('success','Your order has been cancelled by the restaurant')
+                return res.redirect('/customer/orders')
+            }else if(req.user._id.toString() === order.customerId.toString()){
                 return res.render('customers/singleOrder', { order })
             }
             res.redirect('/')

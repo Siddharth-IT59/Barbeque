@@ -1,3 +1,4 @@
+const { redBright } = require('chalk')
 const Order = require('../../../models/order')
 const Promo = require('../../../models/promo')
 
@@ -49,6 +50,19 @@ const orderController = () => {
                 return res.json({ promos: promos })
             }catch(e){
                 return res.json({ status: 'Error !' })
+            }
+        },
+        async cancelOrder(req, res){
+            try{
+                const order = await Order.findOneAndDelete({ _id: req.body.orderId }) 
+                if(!order){
+                    return res.redirect('/')
+                } 
+                const eventEmitter = req.app.get('eventEmitter')
+                eventEmitter.emit('orderCanceled', { id: order._id })
+                return res.redirect('/admin/orders') 
+            }catch(e){
+                res.render('error')
             }
         }
     }
