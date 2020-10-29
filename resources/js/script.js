@@ -31,8 +31,11 @@ function applyPromo(promo_code){
             //let amount = subTotal - res.data.discount
             totalAmt.textContent = '₹'+amount.toString()
         }else{
-            let text = `Invalid promo code.` 
+            let text = `Promo code deactivated/invalid` 
             changeText(text)
+            window.setTimeout(function(){
+                window.location.reload()
+            },4000)    
         }    
     })
 }

@@ -8,6 +8,7 @@ let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
 let applyBtn = document.querySelector('#apply-promo')
 let cancelBtn = document.querySelectorAll('.cancel')
+var select = document.querySelector('.selectList')
 
 function updateCart(dish){
     axios.post('/update-cart', dish).then((res) => {
@@ -41,7 +42,15 @@ const alertMsg = document.querySelector('#success-alert')
 if(alertMsg){
     setTimeout(() => {
         alertMsg.remove()
-    },2000)
+    },2500)
+}
+
+if(select){
+    select.addEventListener('change', (e) => {
+        let value = select.value
+        let code = document.getElementById('coupon')
+        code.value = value
+    }) 
 }
 
 if(applyBtn){

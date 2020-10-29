@@ -1,9 +1,14 @@
+const Promo = require("../../../models/promo")
+
 const cartController = () => {
     return{
-        index(req, res) {
-            res.render('customers/cart')
+        async index(req, res) {
+            const promos = await Promo.find({})
+            if(promos){
+                res.render('customers/cart',{ promos: promos })
+            }
         },
-        update(req, res) {
+        async update(req, res) {
             //creating cart for the first time
             if(!req.session.cart){
                 req.session.cart = {
@@ -26,7 +31,6 @@ const cartController = () => {
                 cart.totalQty = cart.totalQty + 1
                 cart.totalPrice = cart.totalPrice + req.body.price
             }
-
             return res.json({totalQty: req.session.cart.totalQty})
         }
     }

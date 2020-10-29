@@ -28326,6 +28326,7 @@ var addToCart = document.querySelectorAll('.add-to-cart');
 var cartCounter = document.querySelector('#cartCounter');
 var applyBtn = document.querySelector('#apply-promo');
 var cancelBtn = document.querySelectorAll('.cancel');
+var select = document.querySelector('.selectList');
 
 function updateCart(dish) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/update-cart', dish).then(function (res) {
@@ -28358,7 +28359,15 @@ var alertMsg = document.querySelector('#success-alert');
 if (alertMsg) {
   setTimeout(function () {
     alertMsg.remove();
-  }, 2000);
+  }, 2500);
+}
+
+if (select) {
+  select.addEventListener('change', function (e) {
+    var value = select.value;
+    var code = document.getElementById('coupon');
+    code.value = value;
+  });
 }
 
 if (applyBtn) {
@@ -28498,8 +28507,11 @@ function applyPromo(promo_code) {
 
       totalAmt.textContent = '₹' + amount.toString();
     } else {
-      var _text2 = "Invalid promo code.";
+      var _text2 = "Promo code deactivated/invalid";
       changeText(_text2);
+      window.setTimeout(function () {
+        window.location.reload();
+      }, 4000);
     }
   });
 }
