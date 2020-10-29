@@ -107,7 +107,7 @@ export function addDiscount(){
 export function dropdown(){
     let dropdown = document.querySelector('.dropdown')
     if(dropdown){
-        dropdown.addEventListener('click', (e) => {
+        dropdown.addEventListener('mouseover', (e) => {
             axios.get('/active-codes').then((res) => {
                 let options = document.querySelectorAll('option')
                 if(options){
@@ -226,6 +226,16 @@ export function initAdmin(socket) {
         orders.unshift(order)
         orderTableBody.innerHTML = ''
         orderTableBody.innerHTML = generateMarkup(orders)
+    })
+    socket.on('cancelledByCustomer', (order) => {
+        new Noty({
+            type: "warning",
+            text: `Order Cancelled (${order.id})`,
+            timeout: 2000
+        }).show()
+        window.setTimeout(function(){
+            window.location.reload()
+        },5000)
     })
 }
 

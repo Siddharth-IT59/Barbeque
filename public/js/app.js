@@ -28212,7 +28212,7 @@ function dropdown() {
   var dropdown = document.querySelector('.dropdown');
 
   if (dropdown) {
-    dropdown.addEventListener('click', function (e) {
+    dropdown.addEventListener('mouseover', function (e) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/active-codes').then(function (res) {
         var options = document.querySelectorAll('option');
 
@@ -28279,6 +28279,16 @@ function initAdmin(socket) {
     orders.unshift(order);
     orderTableBody.innerHTML = '';
     orderTableBody.innerHTML = generateMarkup(orders);
+  });
+  socket.on('cancelledByCustomer', function (order) {
+    new noty__WEBPACK_IMPORTED_MODULE_3___default.a({
+      type: "warning",
+      text: "Order Cancelled (".concat(order.id, ")"),
+      timeout: 2000
+    }).show();
+    window.setTimeout(function () {
+      window.location.reload();
+    }, 5000);
   });
 }
 
@@ -28433,7 +28443,7 @@ socket.on('orderCanceled', function (notification) {
   }).show();
   window.setTimeout(function () {
     window.location.href = '/customer/orders';
-  }, 2000);
+  }, 3000);
 });
 
 /***/ }),

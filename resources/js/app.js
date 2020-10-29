@@ -126,5 +126,5 @@ socket.on('orderCanceled', (notification) => {
     }).show()
     window.setTimeout(function(){
         window.location.href = '/customer/orders'
-    },2000)
+    },3000)
 })

@@ -66,6 +66,9 @@ const orderController = () => {
                 req.flash('error','Cannot Delete')
                 return res.redirect('/customers/orders')
             }
+            const eventEmitter = req.app.get('eventEmitter')
+            eventEmitter.emit('cancelledByCustomer', { id: order._id })
+                
             return res.redirect('/')
         },
         async applyPromoCode(req, res){

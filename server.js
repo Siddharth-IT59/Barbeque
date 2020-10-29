@@ -91,6 +91,10 @@ eventEmitter.on('orderPlaced', (data) => {
     io.to('adminRoom').emit('orderPlaced', data)
 })
 
+eventEmitter.on('cancelledByCustomer', (data) => {
+    io.to('adminRoom').emit('cancelledByCustomer', data)
+})
+
 eventEmitter.on('orderCanceled', (data) => {
     console.log('order cancelled')
     if(data){
