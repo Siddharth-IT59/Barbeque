@@ -66,7 +66,7 @@
                                     <p class="text-green-900"><%= menuItem.item.name %> x <%= menuItem.qty %>&emsp;=&emsp;₹<%= menuItem.item.price %></p>
                                 <% }) %>
                                 <% order.promoCode === '' ? order.promoCode = '0' : order.promoCode = order.promoCode %>
-                                <p class="text-green-900 font-bold">Total&emsp;=&emsp;₹<%= parseInt(order.total) + parseInt(order.promoCode) %></p>
+                                <p class="text-green-900 font-bold">Sub Total&emsp;=&emsp;₹<%= parseInt(order.total) + parseInt(order.promoCode) %></p>
                             </td>
                             <td class="border px-4 py-2">
                                 <%= order.promoCode %>
@@ -86,7 +86,7 @@
         <div class="mt-2 flex flex-no-wrap mb-16">
             <p class="font-bold text-3xl flex-none">Total Revenue : </p>
             <% if(revenue != ''){ %>
-                <p class="flex-none ml-4 text-3xl">₹<%= revenue %></p>
+                <p class="flex-none ml-4 text-3xl text-red-500 font-bold">₹<%= revenue %></p>
             <% }else{ %>
                 <p class="flex-none ml-4 text-3xl">-</p>
             <% } %>    

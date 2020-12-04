@@ -27,14 +27,14 @@
             <div class="mb-4">
                 <select name="" class="w-1/6 selectList px-2 py-2 bg-white border border-gray-400 shadow leading-tight" id="">
                     <% promos.forEach((promo) => { %>
-                        <option class="promo-list" value="<%= promo.code %>"><%= promo.code %></option>
+                        <option class="px-4 py-2" value="<%= promo.code %>"><%= promo.code %></option>
                     <% }) %>
                 </select>
                 <input name="code" id="coupon" class="border border-gray-400 p-2 w-1/6 ml-2 mr-4" type="text" placeholder="Promo Code">
                 <button id="apply-promo" class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Apply</button>
             </div>
             <div class="mb-6">
-                <span class="text-lg font-bold">Total Amount</span>
+                <span class="text-xl font-bold">Total Amount</span>
                 <% let discount = 0 %>
                 <% if(session.promo != 0 ){ %>
                     <% discount = session.promo %>

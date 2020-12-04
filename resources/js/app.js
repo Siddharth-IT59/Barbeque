@@ -124,6 +124,11 @@ socket.on('orderUpdated', (data) => {
         text: 'Status changed',
         //timeout: 1000
     }).show()
+    if(data.status === 'completed'){
+        window.setTimeout(function(){
+            window.location.href = '/customer/orders'
+        },3000)
+    }
     console.log(data)
 })
 
@@ -131,7 +136,7 @@ socket.on('orderCanceled', (notification) => {
     new Noty({
         type: "warning",
         text: notification,
-        timeout: 1000
+        timeout: 2000
     }).show()
     window.setTimeout(function(){
         window.location.href = '/customer/orders'
