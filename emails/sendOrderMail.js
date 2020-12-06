@@ -41,7 +41,7 @@ const sendOrderMail = (order) => {
 
     const mailOptions = {
         from: '0206it181059@ggits.net',
-        to: 'siddharthkesharwani14@gmail.com',//order.customerId.email
+        to: order.customerId.email,
         subject: 'Bill',
         html: `<!DOCTYPE html>
         <html>

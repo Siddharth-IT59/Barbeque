@@ -6,8 +6,8 @@
         <div class="w-1/2">
             <h6 class="text-lg"><em>Craving for something ?</em></h6>
             <div class="flex">
-                <h1 class="text-6xl shadow-effect font-bold mb-16 mt-4">Order Now</h1>
-                <span class="flex-1"><img class="w-20 mb-4 ml-6" src="/img/icons/hungry.png" alt=""></span>
+                <h1 class="text-3xl md:text-6xl shadow-effect font-bold mb-16 mt-4">Order Now</h1>
+                <span class="flex-1"><img class="w-10 md:w-20 mb-4 ml-6" src="/img/icons/hungry.png" alt=""></span>
             </div>
             <h3 class="text-2xl font-bold mb-6">Our Speciality</h3>
             <div class="w-64 h-auto zoom hover-style rounded overflow-hidden shadow-lg bg-gray-100">
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="carousel relative shadow-2xl bg-white">
-            <div class="carousel-inner relative overflow-hidden w-full">
+            <div class="carousel-inner relative overflow-hidden w-1/3 h-50 md:w-full md:h-full">
                 <!--Slide 1-->
                 <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""
                     checked="checked">
@@ -110,9 +110,9 @@
 <div class="" style="background-color: #ffefa0;">
     <section class="menu container mx-auto py-8">
         <h1 class="text-xl font-bold mb-8">Menu</h1>
-        <div class="grid grid-cols-4 col-gap-12 row-gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-8">
             <% dishes.forEach((dish) => { %>
-            <div class="w-64 hover-style zoom shadow-2xl bg-orange-200 cursor-pointer rounded-t-none mb-8">
+            <div class="w-full md:w-64 hover-style zoom shadow-2xl bg-orange-200 cursor-pointer rounded-t-none mb-8">
                 <img class="h-90 mb-2 mx-auto rounded-t-none" src="/img/menu/<%= dish.image %>" alt="">
                 <div class="text-center bg-orange-200 rounded-t-none">
                     <h2 class="mb-2 text-lg font-bold"><%= dish.name %></h2>
@@ -159,8 +159,8 @@
         </div>
 
         <h1 class="text-2xl font-bold mb-4">Reviews & Ratings</h1>
-        <div class="grid grid-cols-4 col-gap-12 row-gap-16 mb-6 ml-8">
-            <div class="w-64 zoom hover-style cursor-pointer shadow-2xl bg-gray-300 mb-4 rounded">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16 mb-6 ml-8">
+            <div class="w-full md:w-64 zoom hover-style cursor-pointer shadow-2xl bg-gray-300 mb-4 rounded">
                 <img class="h-50 mb-4 mx-auto card mt-2" src="/img/icons/aadmi.png" alt="">
                 <div class="text-center mb-2">
                     <h2 class="mb-4 text-lg font-bold">Yash</h2>
@@ -172,7 +172,7 @@
                     </p>
                 </div>
             </div>
-            <div class="w-64 hover-style zoom cursor-pointer shadow-2xl bg-gray-300 mb-4 rounded">
+            <div class="w-full md:w-64 hover-style zoom cursor-pointer shadow-2xl bg-gray-300 mb-4 rounded">
                 <img class="h-50 mb-4 mx-auto card mt-2" src="/img/icons/aurat.png" alt="">
                 <div class="text-center mb-2">
                     <h2 class="mb-4 text-lg font-bold">Shreya Kesharwani</h2>
@@ -183,7 +183,7 @@
                     </p>
                 </div>
             </div>
-            <div class="w-64 hover-style zoom cursor-pointer shadow-2xl bg-gray-300 mb-4 rounded">
+            <div class="w-full md:w-64 hover-style zoom cursor-pointer shadow-2xl bg-gray-300 mb-4 rounded">
                 <img class="h-50 mb-4 mx-auto card mt-2" src="/img/icons/aadmi.png" alt="">
                 <div class="text-center mb-2">
                     <h2 class="mb-4 text-lg font-bold">Virat Kohli</h2>
@@ -195,7 +195,7 @@
                     </p>
                 </div>
             </div>
-            <div class="w-64 hover-style zoom cursor-pointer shadow-2xl bg-gray-300 mb-4 rounded">
+            <div class="w-full md:w-64 hover-style zoom cursor-pointer shadow-2xl bg-gray-300 mb-4 rounded">
                 <img class="h-50 mb-4 mx-auto card mt-2" src="/img/icons/aurat.png" alt="">
                 <div class="text-center mb-2">
                     <h2 class="mb-4 text-lg font-bold">Sameer Ansari</h2>

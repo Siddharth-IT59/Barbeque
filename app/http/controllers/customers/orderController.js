@@ -32,7 +32,7 @@ const orderController = () => {
                 }, (err, data) => {
                     req.flash('success', 'Order Placed successfully !')
                     sendOrderMail(result)
-                    //console.log(result)
+                    console.log(result)
                     delete req.session.cart
                     delete req.session.promo
                     // Emit
